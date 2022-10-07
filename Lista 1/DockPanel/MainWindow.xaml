@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DockPanel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="450" Width="450">
+    <DockPanel>
+        <Button DockPanel.Dock="Bottom">Bottom</Button>
+        <Button DockPanel.Dock="Left">Left</Button>
+        <Button DockPanel.Dock="Right">Right</Button>
+        <Button DockPanel.Dock="Top">Top</Button>
 
-    </Grid>
+        
+        
+        <Button DockPanel.Dock="Top">top2</Button>
+
+        <Button DockPanel.Dock="Right">Right2</Button>
+        <Button DockPanel.Dock="Top">top3</Button>
+        <Button DockPanel.Dock="Right">Right3</Button>
+
+        <Button>fill</Button>
+
+    </DockPanel>
 </Window>
