@@ -11,7 +11,7 @@
         <Button Canvas.Left="196" Canvas.Top="30" Height="50" Width="100" >1</Button>
 
         <Button Canvas.Left="100" Canvas.Top="120" Height="50" Width="100" >2</Button>
-        <Button Canvas.Left="290" Canvas.Top="120" Height="50" Width="100" >3</Button>
+        <Button Canvas.Left="290" Canvas.Top="120" Height="50" Width="100" >2</Button>
 
         <Button Canvas.Left="30" Canvas.Top="200" Height="50" Width="100" >3</Button>
         <Button Canvas.Left="150" Canvas.Top="200" Height="50" Width="100" >3</Button>
