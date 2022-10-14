@@ -20,7 +20,8 @@ namespace zadanie_1
     /// </summary>
     public partial class MainWindow : Window
     {
-        double lastNumber, result;
+        private double _currentNumber, _lastNumber, _result;
+        private string _mathOperation;
 
         public MainWindow()
         {
@@ -30,29 +31,90 @@ namespace zadanie_1
             NegativeButton.Click += NegativeConvert_Button;
             PercentageButton.Click += PercentageCalculate_Button;
             EqualButton.Click += equal_Button;
+            AddButton.Click += AddButtonOnClick;
+            SubButton.Click += SubButtonOnClick;
+            MultButton.Click += MultButtonOnClick;
+            DivisionButton.Click += DivisionButtonOnClick;
+        }
+
+        private void FunctionButton()
+        {
+            _lastNumber = double.Parse(ResultLabel.Content.ToString()!);
+            LastNumber.Content = $"{ResultLabel.Content} {this._mathOperation}";
+            ResultLabel.Content = "0";
+        }
+
+        private void AddButtonOnClick(object sender, RoutedEventArgs e)
+        {
+            this._mathOperation = "+";
+            FunctionButton();
+        }
+
+        private void SubButtonOnClick(object sender, RoutedEventArgs e)
+        {
+            this._mathOperation = "-";
+            FunctionButton();
+        }
+
+        private void MultButtonOnClick(object sender, RoutedEventArgs e)
+        {
+            this._mathOperation = "*";
+            FunctionButton();
+        }
+
+        private void DivisionButtonOnClick(object sender, RoutedEventArgs e)
+        {
+            this._mathOperation = "/";
+            FunctionButton();
         }
 
         private void equal_Button(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            _currentNumber = double.Parse(ResultLabel.Content.ToString()!);
+            LastNumber.Content = "";
+
+            switch (this._mathOperation)
+            {
+                case "+":
+                    this._result = _currentNumber + _lastNumber;
+                    break;
+                case "-":
+                    this._result = _lastNumber - _currentNumber;
+                    break;
+                case "*":
+                    this._result = _currentNumber * _lastNumber;
+                    break;
+                case "/":
+                    this._result = _lastNumber / _currentNumber;
+                    break;
+            }
+
+
+            this._mathOperation = "";
+            ResultLabel.Content = this._result;
+
         }
 
         private void PercentageCalculate_Button(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(ResultLabel.Content.ToString(), out lastNumber))
+            if (!double.TryParse(ResultLabel.Content.ToString(), out _lastNumber))
             {
-                lastNumber /= 100;
-                ResultLabel.Content = lastNumber.ToString();
+                return;
             }
+
+            _lastNumber /= 100;
+            ResultLabel.Content = _lastNumber.ToString();
         }
 
         private void NegativeConvert_Button(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(ResultLabel.Content.ToString(), out lastNumber))
+            if (!double.TryParse(ResultLabel.Content.ToString(), out _lastNumber))
             {
-                lastNumber *= -1;
-                ResultLabel.Content = lastNumber.ToString();
+                return;
             }
+
+            _lastNumber *= -1;
+            ResultLabel.Content = _lastNumber.ToString();
         }
 
         private void ClearResult_Button(object sender, RoutedEventArgs e)
@@ -63,6 +125,18 @@ namespace zadanie_1
         private void NumberEvent_Button(object sender, RoutedEventArgs e)
         {
             var content = (sender as Button).Content;
+
+            if (ResultLabel.Content.ToString()!.Length > 8)
+            {
+                return;
+            }
+
+            if (this._result != 0)
+            {
+                ResultLabel.Content = 0;
+                this._result = 0;
+            }
+
             if (ResultLabel.Content.ToString() == "0")
             {
                 ResultLabel.Content = content as string;
