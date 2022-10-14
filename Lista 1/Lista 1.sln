@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kalkulator", "Kalkulator\Kalkulator.csproj", "{D3F6AAC1-941E-46DE-A8FE-4B67920A831B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalkulator", "Kalkulator\Kalkulator.csproj", "{D3F6AAC1-941E-46DE-A8FE-4B67920A831B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DodawanieStudenta", "DodawanieStudenta\DodawanieStudenta.csproj", "{810DEFF9-C957-43AC-B2C5-BEB00A7EA877}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DodawanieStudenta", "DodawanieStudenta\DodawanieStudenta.csproj", "{810DEFF9-C957-43AC-B2C5-BEB00A7EA877}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockPanel", "DockPanel\DockPanel.csproj", "{8337A58F-6BD8-42C7-8D61-525C6FC88EA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{810DEFF9-C957-43AC-B2C5-BEB00A7EA877}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{810DEFF9-C957-43AC-B2C5-BEB00A7EA877}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{810DEFF9-C957-43AC-B2C5-BEB00A7EA877}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8337A58F-6BD8-42C7-8D61-525C6FC88EA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8337A58F-6BD8-42C7-8D61-525C6FC88EA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8337A58F-6BD8-42C7-8D61-525C6FC88EA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8337A58F-6BD8-42C7-8D61-525C6FC88EA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

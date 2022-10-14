@@ -5,22 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DockPanel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="450">
+        Title="MainWindow" Height="300" Width="300">
+
     <DockPanel>
-        <Button DockPanel.Dock="Bottom">Bottom</Button>
-        <Button DockPanel.Dock="Left">Left</Button>
-        <Button DockPanel.Dock="Right">Right</Button>
-        <Button DockPanel.Dock="Top">Top</Button>
+        <Button DockPanel.Dock="Bottom" Height="50">Bottom</Button>
+        <Button DockPanel.Dock="Left" Width="50">Left</Button>
+        <Button DockPanel.Dock="Right" Width="50">Right</Button>
 
-        
-        
-        <Button DockPanel.Dock="Top">top2</Button>
+        <Button Background="Red" DockPanel.Dock="Top" Height="50">Top</Button>
+        <Button Background="Green" DockPanel.Dock="Top" Height="100" Width="80">Top2</Button>
 
-        <Button DockPanel.Dock="Right">Right2</Button>
-        <Button DockPanel.Dock="Top">top3</Button>
-        <Button DockPanel.Dock="Right">Right3</Button>
+        <Button DockPanel.Dock="Right" Height="50" Width="50">Right2</Button>
+        <Button DockPanel.Dock="Right" Height="50" Width="50">Right3</Button>
+        <Button Background="Blue" DockPanel.Dock="Top" Height="30" Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom">Top3</Button>
 
-        <Button>fill</Button>
-
+        <Button Height="60" Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom">Fill</Button>
     </DockPanel>
 </Window>
