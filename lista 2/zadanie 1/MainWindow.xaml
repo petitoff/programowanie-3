@@ -167,7 +167,8 @@
                 Grid.Column="0"
                 Content="0"
                 Style="{StaticResource NumberButton}" />
-        <Button Grid.Row="5"
+        <Button Click="NumberEvent_Button"
+                Grid.Row="5"
                 Grid.Column="2"
                 Content="."
                 Style="{StaticResource NumberButton}" />
