@@ -119,7 +119,6 @@ namespace zadanie_2
             {
                 mGameEnd = true;
 
-                // Highlight winning cells in green
                 Button0_0.Background = Button1_0.Background = Button2_0.Background = Brushes.Green;
             }
             //
@@ -129,7 +128,6 @@ namespace zadanie_2
             {
                 mGameEnd = true;
 
-                // Highlight winning cells in green
                 Button0_1.Background = Button1_1.Background = Button2_1.Background = Brushes.Green;
             }
             //
@@ -139,7 +137,6 @@ namespace zadanie_2
             {
                 mGameEnd = true;
 
-                // Highlight winning cells in green
                 Button0_2.Background = Button1_2.Background = Button2_2.Background = Brushes.Green;
             }
 
@@ -155,7 +152,6 @@ namespace zadanie_2
             {
                 mGameEnd = true;
 
-                // Highlight winning cells in green
                 Button0_0.Background = Button0_1.Background = Button0_2.Background = Brushes.Green;
             }
             //
@@ -165,7 +161,6 @@ namespace zadanie_2
             {
                 mGameEnd = true;
 
-                // Highlight winning cells in green
                 Button1_0.Background = Button1_1.Background = Button1_2.Background = Brushes.Green;
             }
             //
@@ -175,7 +170,6 @@ namespace zadanie_2
             {
                 mGameEnd = true;
 
-                // Highlight winning cells in green
                 Button2_0.Background = Button2_1.Background = Button2_2.Background = Brushes.Green;
             }
 
@@ -191,7 +185,6 @@ namespace zadanie_2
             {
                 mGameEnd = true;
 
-                // Highlight winning cells in green
                 Button0_0.Background = Button1_1.Background = Button2_2.Background = Brushes.Green;
             }
             //
@@ -201,7 +194,6 @@ namespace zadanie_2
             {
                 mGameEnd = true;
 
-                // Highlight winning cells in green
                 Button2_0.Background = Button1_1.Background = Button0_2.Background = Brushes.Green;
             }
 
