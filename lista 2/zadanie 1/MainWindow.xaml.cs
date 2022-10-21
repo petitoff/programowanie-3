@@ -91,7 +91,7 @@ namespace zadanie_1
 
 
             this._mathOperation = "";
-            ResultLabel.Content = this._result;
+            ResultLabel.Content = System.Math.Round(this._result, 6);
 
         }
 
