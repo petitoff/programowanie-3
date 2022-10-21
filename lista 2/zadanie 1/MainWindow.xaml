@@ -65,9 +65,7 @@
                    FontSize="60" />
         </Grid>
 
-
-
-
+        
         <!--top function buttons-->
         <Button x:Name="AcButton"
                 Grid.Row="1"
@@ -82,8 +80,7 @@
                 Grid.Column="2"
                 Content="%" />
 
-
-
+        
         <!--right function buttons-->
         <Button x:Name="DivisionButton"
                 Grid.Row="1"
