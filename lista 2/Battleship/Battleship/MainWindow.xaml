@@ -4,9 +4,53 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Battleship"
+        xmlns:view="clr-namespace:Battleship.View"
+        xmlns:viewmodel="clr-namespace:Battleship.ViewModel"
+        d:DataContext="{d:DesignInstance Type=viewmodel:GameViewModel}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"
+        Height="450"
+        Width="1000"
+        Background="#24272b">
+
+
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+
+        <view:Options Grid.Column="0"
+                      Grid.Row="0" />
+
+        <view:SelectShips Grid.Column="1"
+                          Grid.Row="0" />
+
+        <Grid Grid.Column="2"
+              VerticalAlignment="Center">
+            <ItemsControl ItemsSource="{Binding Battlefield}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <!-- execute AddShip in button -->
+                        <Button CommandParameter="{Binding}"
+                                Command="{Binding DataContext.AddShip, RelativeSource={RelativeSource AncestorType=Window}}"
+                                BorderBrush="Black"
+                                BorderThickness="1"
+                                Width="30"
+                                Height="30"
+                                Margin="1" />
+
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </Grid>
     </Grid>
 </Window>

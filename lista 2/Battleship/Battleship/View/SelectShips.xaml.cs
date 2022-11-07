@@ -1,5 +1,4 @@
-﻿using Battleship.View;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,26 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Battleship
+namespace Battleship.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SelectShips.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SelectShips : UserControl
     {
-        public MainWindow()
+        public SelectShips()
         {
             InitializeComponent();
-
-            this.DataContext = new ViewModel.GameViewModel();
-
-            // create new windows Player2
-            Player2 player2 = new Player2();
-            player2.Show();
-        }
-
-        private void AddTaskItem_OnClick(object sender, RoutedEventArgs e)
-        {
         }
     }
 }

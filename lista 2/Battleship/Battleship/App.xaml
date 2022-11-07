@@ -4,6 +4,25 @@
              xmlns:local="clr-namespace:Battleship"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <!--buttons-->
+        <Style x:Key="ButtonOptions"
+               TargetType="{x:Type Button}">
+            <Setter Property="Margin"
+                    Value="0 5 0 0" />
+            <Setter Property="Height"
+                    Value="30" />
+            <Setter Property="Width"
+                    Value="100" />
+        </Style>
+
+        <!--TextBlock-->
+        <Style x:Key="HeaderTitle"
+               TargetType="TextBlock">
+            <Setter Property="Foreground"
+                    Value="#fff" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+        </Style>
     </Application.Resources>
 </Application>
