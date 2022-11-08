@@ -6,12 +6,17 @@
         xmlns:local="clr-namespace:Battleship"
         xmlns:view="clr-namespace:Battleship.View"
         xmlns:viewmodel="clr-namespace:Battleship.ViewModel"
+        xmlns:converter="clr-namespace:Battleship.Converter"
         d:DataContext="{d:DesignInstance Type=viewmodel:GameViewModel}"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="450"
         Width="1000"
         Background="#24272b">
+
+    <Window.Resources>
+        <converter:IsEmptyColorButtonConverter x:Key="isEmptyColorButtonConverter" />
+    </Window.Resources>
 
 
     <Grid>
@@ -38,6 +43,7 @@
                         <Button CommandParameter="{Binding}"
                                 Command="{Binding DataContext.AddShip, RelativeSource={RelativeSource AncestorType=Window}}"
                                 BorderBrush="Black"
+                                Background="{Binding IsEmpty, Converter={StaticResource isEmptyColorButtonConverter}}"
                                 BorderThickness="1"
                                 Width="30"
                                 Height="30"
