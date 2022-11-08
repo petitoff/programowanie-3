@@ -24,11 +24,13 @@ namespace Battleship
         public MainWindow()
         {
             InitializeComponent();
-
-            this.DataContext = new ViewModel.GameViewModel();
+            
+            var _vieModel = new ViewModel.GameViewModel();
+            this.DataContext = _vieModel;
 
             // create new windows Player2
             Player2 player2 = new Player2();
+            player2.DataContext = _vieModel;
             player2.Show();
         }
 

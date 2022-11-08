@@ -2,6 +2,7 @@
 using Battleship.Model;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace Battleship.ViewModel
@@ -42,16 +43,26 @@ namespace Battleship.ViewModel
             Battlefield = new ObservableCollection<Battlefield>();
             for (int i = 0; i < 100; i++)
             {
-                Battlefield.Add(new Battlefield() { Player = Constans.Player.Player1, IsEmpty = false, Id = i });
+                Battlefield.Add(new Battlefield() { Player = Constans.Player.Player1, IsEmpty = true, Id = i });
             }
+
         }
 
         private void AddShipPosition(object obj)
         {
             Battlefield battlefield = obj as Battlefield;
 
-            if (battlefield.Player == Constans.Player.Player1)
-                return;
+            // create new battlefield
+            var battle = new Battlefield()
+            {
+                Player = battlefield.Player,
+                IsEmpty = false,
+                Id = battlefield.Id
+            };
+            
+
+            var found = Battlefield.FirstOrDefault(x => x.Id == battlefield.Id);
+            found.IsEmpty = false;
         }
     }
 }

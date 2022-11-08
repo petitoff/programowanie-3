@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Command\AddShipPositionCommand.cs" />
     <Compile Include="Constans\Player.cs" />
+    <Compile Include="Converter\IsEmptyColorButtonConverter.cs" />
     <Compile Include="Model\Battlefield.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\GameViewModel.cs" />
