@@ -33,9 +33,5 @@ namespace Battleship
             player2.DataContext = _vieModel;
             player2.Show();
         }
-
-        private void AddTaskItem_OnClick(object sender, RoutedEventArgs e)
-        {
-        }
     }
 }

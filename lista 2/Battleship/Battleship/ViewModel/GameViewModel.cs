@@ -15,6 +15,7 @@ namespace Battleship.ViewModel
         public AddShipPositionCommand AddShip { get; }
 
         public ObservableCollection<Battlefield> Battlefield { get; }
+        public ObservableCollection<Battlefield> Battlefield2 { get; }
 
         public int Player1Score
         {
@@ -40,10 +41,18 @@ namespace Battleship.ViewModel
         {
             AddShip = new AddShipPositionCommand(AddShipPosition);
 
+            int numberOfButtons = 100;
+
             Battlefield = new ObservableCollection<Battlefield>();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < numberOfButtons; i++)
             {
                 Battlefield.Add(new Battlefield() { Player = Constans.Player.Player1, IsEmpty = true, Id = i });
+            }
+
+            Battlefield2 = new ObservableCollection<Battlefield>();
+            for (int i = 0; i < numberOfButtons; i++)
+            {
+                Battlefield2.Add(new Battlefield() { Player = Constans.Player.Player2, IsEmpty = true, Id = i });
             }
 
         }
@@ -52,17 +61,16 @@ namespace Battleship.ViewModel
         {
             Battlefield battlefield = obj as Battlefield;
 
-            // create new battlefield
-            var battle = new Battlefield()
+            if (battlefield.Player == Constans.Player.Player1)
             {
-                Player = battlefield.Player,
-                IsEmpty = false,
-                Id = battlefield.Id
-            };
-            
-
-            var found = Battlefield.FirstOrDefault(x => x.Id == battlefield.Id);
-            found.IsEmpty = false;
+                var found = Battlefield.FirstOrDefault(x => x.Id == battlefield.Id);
+                found.IsEmpty = false;
+            }
+            else
+            {
+                var found = Battlefield2.FirstOrDefault(x => x.Id == battlefield.Id);
+                found.IsEmpty = false;
+            }
         }
     }
 }
