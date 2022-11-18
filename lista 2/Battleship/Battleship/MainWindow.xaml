@@ -33,10 +33,10 @@
 
         <view:SelectShips Grid.Column="1"
                           Grid.Row="0" />
-        
+
         <Grid Grid.Column="2"
               VerticalAlignment="Center">
-            <ItemsControl ItemsSource="{Binding Battlefield}">
+            <ItemsControl ItemsSource="{Binding Battlefield1}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <!-- execute AddShip in button -->
@@ -61,12 +61,12 @@
 
         <Grid Grid.Column="3"
               VerticalAlignment="Center">
-            <ItemsControl ItemsSource="{Binding Battlefield2}">
+            <ItemsControl ItemsSource="{Binding BattlefieldShoot2}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <!-- execute AddShip in button -->
                         <Button CommandParameter="{Binding}"
-                                Command="{Binding DataContext.AddShip, RelativeSource={RelativeSource AncestorType=Window}}"
+                                Command="{Binding DataContext.ShootShip, RelativeSource={RelativeSource AncestorType=Window}}"
                                 BorderBrush="Black"
                                 Background="{Binding IsEmpty, Converter={StaticResource isEmptyColorButtonConverter}}"
                                 BorderThickness="1"

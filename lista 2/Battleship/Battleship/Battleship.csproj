@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\AddShipPositionCommand.cs" />
+    <Compile Include="Command\ShootShipPositionCommand.cs" />
     <Compile Include="Constans\Player.cs" />
     <Compile Include="Converter\IsEmptyColorButtonConverter.cs" />
     <Compile Include="Model\Battlefield.cs" />

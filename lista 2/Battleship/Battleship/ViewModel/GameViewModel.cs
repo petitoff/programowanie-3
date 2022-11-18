@@ -13,9 +13,12 @@ namespace Battleship.ViewModel
         private int _player2Score;
 
         public AddShipPositionCommand AddShip { get; }
+        public ShootShipPositionCommand ShootShip { get; }
 
-        public ObservableCollection<Battlefield> Battlefield { get; }
+        public ObservableCollection<Battlefield> Battlefield1 { get; }
+        public ObservableCollection<Battlefield> BattlefieldShoot1 { get; }
         public ObservableCollection<Battlefield> Battlefield2 { get; }
+        public ObservableCollection<Battlefield> BattlefieldShoot2 { get; }
 
         public int Player1Score
         {
@@ -40,13 +43,14 @@ namespace Battleship.ViewModel
         public GameViewModel()
         {
             AddShip = new AddShipPositionCommand(AddShipPosition);
+            ShootShip = new ShootShipPositionCommand(ShootShipPosition);
 
             int numberOfButtons = 100;
 
-            Battlefield = new ObservableCollection<Battlefield>();
+            Battlefield1 = new ObservableCollection<Battlefield>();
             for (int i = 0; i < numberOfButtons; i++)
             {
-                Battlefield.Add(new Battlefield() { Player = Constans.Player.Player1, IsEmpty = true, Id = i });
+                Battlefield1.Add(new Battlefield() { Player = Constans.Player.Player1, IsEmpty = true, Id = i });
             }
 
             Battlefield2 = new ObservableCollection<Battlefield>();
@@ -55,6 +59,12 @@ namespace Battleship.ViewModel
                 Battlefield2.Add(new Battlefield() { Player = Constans.Player.Player2, IsEmpty = true, Id = i });
             }
 
+            BattlefieldShoot1 = new ObservableCollection<Battlefield>();
+            BattlefieldShoot2 = new ObservableCollection<Battlefield>();
+            for (int i = 0; i < numberOfButtons; i++)
+            {
+                BattlefieldShoot2.Add(new Battlefield() { Player = Constans.Player.Player2, IsEmpty = true, Id = i });
+            }
         }
 
         private void AddShipPosition(object obj)
@@ -63,12 +73,34 @@ namespace Battleship.ViewModel
 
             if (battlefield.Player == Constans.Player.Player1)
             {
-                var found = Battlefield.FirstOrDefault(x => x.Id == battlefield.Id);
+                var found = Battlefield1.FirstOrDefault(x => x.Id == battlefield.Id);
                 found.IsEmpty = false;
             }
             else
             {
                 var found = Battlefield2.FirstOrDefault(x => x.Id == battlefield.Id);
+                found.IsEmpty = false;
+            }
+        }
+
+        private void ShootShipPosition(object obj)
+        {
+            var battlefield = obj as Battlefield;
+
+            if(battlefield.Player == Constans.Player.Player2)
+            {
+                var found = Battlefield2.FirstOrDefault(x => x.Id == battlefield.Id);
+                
+                
+                if(found.IsEmpty == false)
+                {
+                    var foundShoot = BattlefieldShoot2.FirstOrDefault(x => x.Id == found.Id);
+                    foundShoot.IsEmpty = false;
+                }
+            }
+            else
+            {
+                var found = BattlefieldShoot2.FirstOrDefault(x => x.Id == battlefield.Id);
                 found.IsEmpty = false;
             }
         }
