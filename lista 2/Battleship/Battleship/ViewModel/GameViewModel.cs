@@ -43,23 +43,27 @@ namespace Battleship.ViewModel
         {
             AddShip = new AddShipPositionCommand(AddShipPosition);
             ShootShip = new ShootShipPositionCommand(ShootShipPosition);
+            Battlefield1 = new ObservableCollection<BattlefieldShoot>();
+            BattlefieldShoot1 = new ObservableCollection<BattlefieldShoot>();
+            BattlefieldShoot2 = new ObservableCollection<BattlefieldShoot>();
+            Battlefield2 = new ObservableCollection<BattlefieldShoot>();
 
+            InitBattlefield();
+        }
+
+        private void InitBattlefield()
+        {
             const int numberOfButtons = 100;
 
-            Battlefield1 = new ObservableCollection<BattlefieldShoot>();
             for (int i = 0; i < numberOfButtons; i++)
             {
                 Battlefield1.Add(new BattlefieldShoot { Player = Player.Player1, Id = i });
             }
 
-            Battlefield2 = new ObservableCollection<BattlefieldShoot>();
             for (int i = 0; i < numberOfButtons; i++)
             {
                 Battlefield2.Add(new BattlefieldShoot { Player = Player.Player2, Id = i });
             }
-
-            BattlefieldShoot1 = new ObservableCollection<BattlefieldShoot>();
-            BattlefieldShoot2 = new ObservableCollection<BattlefieldShoot>();
 
             for (int i = 0; i < numberOfButtons; i++)
             {
