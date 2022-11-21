@@ -7,7 +7,7 @@ using System.Windows.Data;
 
 namespace Battleship.Converter
 {
-    internal class IsEmptyColorButtonConverter : IValueConverter
+    public class IsEmptyColorButtonConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {

@@ -16,8 +16,8 @@
 
     <Window.Resources>
         <converter:IsEmptyColorButtonConverter x:Key="isEmptyColorButtonConverter" />
+        <converter:IsShootColorButtonConverter x:Key="isShootColorButtonConverter" />
     </Window.Resources>
-
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -62,13 +62,17 @@
         <Grid Grid.Column="3"
               VerticalAlignment="Center">
             <ItemsControl ItemsSource="{Binding BattlefieldShoot2}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <!-- execute AddShip in button -->
                         <Button CommandParameter="{Binding}"
                                 Command="{Binding DataContext.ShootShip, RelativeSource={RelativeSource AncestorType=Window}}"
                                 BorderBrush="Black"
-                                Background="{Binding IsEmpty, Converter={StaticResource isEmptyColorButtonConverter}}"
+                                Background="{Binding IsShootGood, Converter={StaticResource isShootColorButtonConverter}}"
                                 BorderThickness="1"
                                 Width="30"
                                 Height="30"
@@ -76,11 +80,6 @@
 
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
             </ItemsControl>
         </Grid>
     </Grid>
