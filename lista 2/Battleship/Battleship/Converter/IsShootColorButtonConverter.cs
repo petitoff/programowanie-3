@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using Battleship.Const;
 
 namespace Battleship.Converter
 {
@@ -13,17 +14,21 @@ namespace Battleship.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-
-            var isShootGood = (int)value;
+            if (value == null)
+            {
+                return "#fff";
+            }
+            
+            var isShootGood = (IsShootGoodEnum)value;
 
             switch (isShootGood)
             {
-                case 0:
-                    return "#fff";
-                case 1:
+                case IsShootGoodEnum.Miss:
                     return "#f00";
-                case 2:
+                case IsShootGoodEnum.Hit:
                     return "#00f";
+                case IsShootGoodEnum.Empty:
+                    return "#fff";
                 default:
                     return "#fff";
             }

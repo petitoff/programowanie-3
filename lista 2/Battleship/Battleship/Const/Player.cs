@@ -1,4 +1,5 @@
-﻿namespace Battleship.Constans
+﻿namespace Battleship.Const
+
 {
     public enum Player
     {

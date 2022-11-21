@@ -1,4 +1,4 @@
-﻿using Battleship.Constans;
+﻿using Battleship.Const;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -6,35 +6,24 @@ namespace Battleship.Model
 {
     public class BattlefieldShoot : INotifyPropertyChanged
     {
-        private bool _isEmpty { get; set; }
-        private int _isShootGood { get; set; }
+        private IsShootGoodEnum _isShootGood;
 
         public int[,] Field { get; set; }
 
         public Player Player { get; set; }
-        public int Id { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public bool IsEmpty
+        public IsShootGoodEnum IsShootGood
         {
-            get { return _isEmpty; }
-            set
-            {
-                _isEmpty = value;
-                OnPropertyChanged();
-            }
-        }
-        
-        public int IsShootGood
-        {
-            get { return _isShootGood; }
+            get => _isShootGood;
             set
             {
                 _isShootGood = value;
                 OnPropertyChanged();
             }
         }
+
+        public int Id { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
