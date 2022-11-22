@@ -14,8 +14,6 @@
         Background="#24272b">
 
     <Window.Resources>
-        <converter:IsEmptyColorButtonConverter x:Key="isEmptyColorButtonConverter" />
-        <converter:IsShootColorButtonConverter x:Key="isShootColorButtonConverter" />
     </Window.Resources>
 
     <Grid>
@@ -58,7 +56,7 @@
                         <Button CommandParameter="{Binding}"
                                 Command="{Binding DataContext.AddShip, RelativeSource={RelativeSource AncestorType=Window}}"
                                 BorderBrush="Black"
-                                Background="{Binding IsShootGood, Converter={StaticResource isEmptyColorButtonConverter}}"
+                                Background="{Binding IsShootGood, Converter={StaticResource IsEmptyColorButtonConverter}}"
                                 BorderThickness="1"
                                 Width="30"
                                 Height="30"
@@ -82,7 +80,7 @@
                         <Button CommandParameter="{Binding}"
                                 Command="{Binding DataContext.ShootShip, RelativeSource={RelativeSource AncestorType=Window}}"
                                 BorderBrush="Black"
-                                Background="{Binding IsShootGood, Converter={StaticResource isShootColorButtonConverter}}"
+                                Background="{Binding IsShootGood, Converter={StaticResource IsShootColorButtonConverter}}"
                                 BorderThickness="1"
                                 Width="30"
                                 Height="30"
