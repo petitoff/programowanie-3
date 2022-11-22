@@ -30,5 +30,6 @@
         <converter:IsShootColorButtonConverter x:Key="IsShootColorButtonConverter" />
         <converter:IsPlayerReadyConverter x:Key="IsPlayerReadyConverter" />
         <converter:IsPlayerReadyTextConverter x:Key="IsPlayerReadyTextConverter" />
+        <converter:PlayerTurnConverter x:Key="PlayerTurnConverter"/>
     </Application.Resources>
 </Application>

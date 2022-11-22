@@ -15,7 +15,7 @@ namespace Battleship.ViewModel
         private IsReady _isPlayer1Ready;
         private IsReady _isPlayer2Ready;
 
-        private bool _isGameRunning;
+        private Player _playerTurn;
 
         public AddShipPositionCommand AddShip { get; }
         public ShootShipPositionCommand ShootShip { get; }
@@ -52,7 +52,7 @@ namespace Battleship.ViewModel
         {
             get => _isPlayer1Ready;
 
-            set
+            private set
             {
                 _isPlayer1Ready = value;
                 OnPropertyChanged();
@@ -62,9 +62,19 @@ namespace Battleship.ViewModel
         public IsReady IsPlayer2Ready
         {
             get => _isPlayer2Ready;
-            set
+            private set
             {
                 _isPlayer2Ready = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Player PlayerTurn
+        {
+            get => _playerTurn;
+            set
+            {
+                _playerTurn = value;
                 OnPropertyChanged();
             }
         }
@@ -107,6 +117,8 @@ namespace Battleship.ViewModel
 
             IsPlayer1Ready = IsReady.NotReady;
             IsPlayer2Ready = IsReady.NotReady;
+
+            PlayerTurn = Player.Player1;
 
             for (int i = 0; i < numberOfButtons; i++)
             {
@@ -184,6 +196,17 @@ namespace Battleship.ViewModel
         private void ValidateShoot(BattlefieldShoot battlefield)
         {
 
+            if (PlayerTurn == Player.Player1 && battlefield.Player == Player.Player1)
+            {
+                return;
+            }
+
+            if (PlayerTurn == Player.Player2 && battlefield.Player == Player.Player2)
+            {
+                return;
+            }
+                
+                
             var found = battlefield.Player == Player.Player1 ? Battlefield1.FirstOrDefault(x => x.Id == battlefield.Id) : Battlefield2.FirstOrDefault(x => x.Id == battlefield.Id);
             if (found == null)
             {
@@ -206,16 +229,8 @@ namespace Battleship.ViewModel
                 foundShoot.IsShootGood = IsShootGoodEnum.Hit;
                 found.IsShootGood = IsShootGoodEnum.Hit;
             }
-        }
 
-        private void ChangeOptions(object obj)
-        {
-
-        }
-
-        public void SubmitReady()
-        {
-            throw new System.NotImplementedException();
+            PlayerTurn = PlayerTurn == Player.Player1 ? Player.Player2 : Player.Player1;
         }
 
         public void RestartGame()

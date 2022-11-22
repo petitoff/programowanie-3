@@ -9,7 +9,7 @@
         xmlns:converter="clr-namespace:Battleship.Converter"
         d:DataContext="{d:DesignInstance Type=viewmodel:GameViewModel}"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="Player1"
         Height="450"
         Width="1000"
         Background="#24272b">
@@ -42,6 +42,7 @@
                     Command="{Binding RestartGameCommand}" />
             <Button Content="Rotacja statku" />
 
+            <TextBlock Text="{Binding PlayerTurn, Converter={StaticResource PlayerTurnConverter}}"/>
             <TextBlock Margin="0 10 0 0" Text="{Binding IsPlayer1Ready, Converter={StaticResource IsPlayerReadyTextConverter}}"
                        Foreground="{Binding IsPlayer1Ready, Converter={StaticResource IsPlayerReadyConverter}}" />
         </StackPanel>
