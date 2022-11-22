@@ -12,11 +12,15 @@ namespace Battleship.ViewModel
         private int _player1Score;
         private int _player2Score;
 
+        private IsReady _isPlayer1Ready;
+        private IsReady _isPlayer2Ready;
+
         private bool _isGameRunning;
 
         public AddShipPositionCommand AddShip { get; }
         public ShootShipPositionCommand ShootShip { get; }
-        public ICommand SubmitReadyCommand { get; }
+        public ExecuteSubmitReadyCommand SubmitReadyPlayer1Command { get; }
+        public ExecuteSubmitReadyCommand SubmitReadyPlayer2Command { get; }
         public ICommand RestartGameCommand { get; }
 
         public ObservableCollection<BattlefieldShoot> Battlefield1 { get; }
@@ -44,11 +48,33 @@ namespace Battleship.ViewModel
             }
         }
 
+        public IsReady IsPlayer1Ready
+        {
+            get => _isPlayer1Ready;
+
+            set
+            {
+                _isPlayer1Ready = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public IsReady IsPlayer2Ready
+        {
+            get => _isPlayer2Ready;
+            set
+            {
+                _isPlayer2Ready = value;
+                OnPropertyChanged();
+            }
+        }
+
         public GameViewModel()
         {
             AddShip = new AddShipPositionCommand(AddShipPosition);
             ShootShip = new ShootShipPositionCommand(ShootShipPosition);
-            SubmitReadyCommand = new ExecuteSubmitReadyCommand(this);
+            SubmitReadyPlayer1Command = new ExecuteSubmitReadyCommand(SubmitReadyPositionPlayer1);
+            SubmitReadyPlayer2Command = new ExecuteSubmitReadyCommand(SubmitReadyPositionPlayer2);
             RestartGameCommand = new ExecuteRestartGameCommand(this);
 
             Battlefield1 = new ObservableCollection<BattlefieldShoot>();
@@ -59,6 +85,17 @@ namespace Battleship.ViewModel
             InitBattlefield();
         }
 
+
+        private void SubmitReadyPositionPlayer1(object obj)
+        {
+            IsPlayer1Ready = IsReady.Ready;
+        }
+
+        private void SubmitReadyPositionPlayer2(object obj)
+        {
+            IsPlayer2Ready = IsReady.Ready;
+        }
+
         private void InitBattlefield()
         {
             const int numberOfButtons = 100;
@@ -67,6 +104,9 @@ namespace Battleship.ViewModel
             BattlefieldShoot1.Clear();
             BattlefieldShoot2.Clear();
             Battlefield2.Clear();
+
+            IsPlayer1Ready = IsReady.NotReady;
+            IsPlayer2Ready = IsReady.NotReady;
 
             for (int i = 0; i < numberOfButtons; i++)
             {
@@ -108,13 +148,24 @@ namespace Battleship.ViewModel
                 return;
             }
 
+
             if (battlefield.Player == Player.Player1)
             {
+                if (IsPlayer1Ready == IsReady.Ready)
+                {
+                    return;
+                }
+
                 var found = Battlefield1.FirstOrDefault(x => x.Id == battlefield.Id);
                 if (found != null) found.IsShootGood = IsShootGoodEnum.Occupied;
             }
             else
             {
+                if (IsPlayer2Ready == IsReady.Ready)
+                {
+                    return;
+                }
+
                 var found = Battlefield2.FirstOrDefault(x => x.Id == battlefield.Id);
                 if (found != null) found.IsShootGood = IsShootGoodEnum.Occupied;
             }

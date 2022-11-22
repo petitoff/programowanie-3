@@ -7,8 +7,7 @@ namespace Battleship.Model
     public class BattlefieldShoot : INotifyPropertyChanged
     {
         private IsShootGoodEnum _isShootGood;
-        private bool _isPlayerReady;
-
+        
         public int[,] Field { get; set; }
 
         public Player Player { get; set; }
@@ -18,16 +17,6 @@ namespace Battleship.Model
             set
             {
                 _isShootGood = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public bool IsPlayerReady
-        {
-            get => _isPlayerReady;
-            set
-            {
-                _isPlayerReady = value;
                 OnPropertyChanged();
             }
         }

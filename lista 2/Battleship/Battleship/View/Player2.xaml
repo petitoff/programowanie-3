@@ -12,7 +12,7 @@
         Height="450"
         Width="1000"
         Background="#24272b">
-    
+
     <Window.Resources>
         <converter:IsEmptyColorButtonConverter x:Key="isEmptyColorButtonConverter" />
         <converter:IsShootColorButtonConverter x:Key="isShootColorButtonConverter" />
@@ -26,8 +26,25 @@
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
-        <view:Options Grid.Column="0"
-                      Grid.Row="0" />
+        <StackPanel Margin="0 20 0 0">
+            <StackPanel.Resources>
+                <Style TargetType="Button"
+                       BasedOn="{StaticResource ButtonOptions}" />
+                <Style TargetType="TextBlock"
+                       BasedOn="{StaticResource HeaderTitle}" />
+            </StackPanel.Resources>
+
+            <TextBlock Text="Opcje" />
+            <Button Content="Gotowy"
+                    Command="{Binding SubmitReadyPlayer2Command}"
+                    CommandParameter="{Binding .}" />
+            <Button Content="Reset"
+                    Command="{Binding RestartGameCommand}" />
+            <Button Content="Rotacja statku" />
+
+            <TextBlock Margin="0 10 0 0" Text="{Binding IsPlayer2Ready, Converter={StaticResource IsPlayerReadyTextConverter}}"
+                       Foreground="{Binding IsPlayer2Ready, Converter={StaticResource IsPlayerReadyConverter}}" />
+        </StackPanel>
 
         <view:SelectShips Grid.Column="1"
                           Grid.Row="0" />

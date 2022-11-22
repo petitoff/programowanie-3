@@ -62,6 +62,8 @@
     <Compile Include="Const\IsShootGoodEnum.cs" />
     <Compile Include="Const\Player.cs" />
     <Compile Include="Converter\IsEmptyColorButtonConverter.cs" />
+    <Compile Include="Converter\IsPlayerReadyConverter.cs" />
+    <Compile Include="Converter\IsPlayerReadyTextConverter.cs" />
     <Compile Include="Converter\IsShootColorButtonConverter.cs" />
     <Compile Include="Model\BattlefieldShoot.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
