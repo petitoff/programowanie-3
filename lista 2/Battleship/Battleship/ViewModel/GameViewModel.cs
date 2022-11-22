@@ -1,18 +1,23 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 using Battleship.Command;
 using Battleship.Const;
 using Battleship.Model;
 
 namespace Battleship.ViewModel
 {
-    class GameViewModel : BaseViewModel
+    public class GameViewModel : BaseViewModel
     {
         private int _player1Score;
         private int _player2Score;
 
+        private bool _isGameRunning;
+
         public AddShipPositionCommand AddShip { get; }
         public ShootShipPositionCommand ShootShip { get; }
+        public ICommand SubmitReadyCommand { get; }
+        public ICommand RestartGameCommand { get; }
 
         public ObservableCollection<BattlefieldShoot> Battlefield1 { get; }
         public ObservableCollection<BattlefieldShoot> BattlefieldShoot1 { get; }
@@ -43,6 +48,9 @@ namespace Battleship.ViewModel
         {
             AddShip = new AddShipPositionCommand(AddShipPosition);
             ShootShip = new ShootShipPositionCommand(ShootShipPosition);
+            SubmitReadyCommand = new ExecuteSubmitReadyCommand(this);
+            RestartGameCommand = new ExecuteRestartGameCommand(this);
+
             Battlefield1 = new ObservableCollection<BattlefieldShoot>();
             BattlefieldShoot1 = new ObservableCollection<BattlefieldShoot>();
             BattlefieldShoot2 = new ObservableCollection<BattlefieldShoot>();
@@ -54,6 +62,11 @@ namespace Battleship.ViewModel
         private void InitBattlefield()
         {
             const int numberOfButtons = 100;
+
+            Battlefield1.Clear();
+            BattlefieldShoot1.Clear();
+            BattlefieldShoot2.Clear();
+            Battlefield2.Clear();
 
             for (int i = 0; i < numberOfButtons; i++)
             {
@@ -142,6 +155,21 @@ namespace Battleship.ViewModel
                 foundShoot.IsShootGood = IsShootGoodEnum.Hit;
                 found.IsShootGood = IsShootGoodEnum.Hit;
             }
+        }
+
+        private void ChangeOptions(object obj)
+        {
+
+        }
+
+        public void SubmitReady()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void RestartGame()
+        {
+            InitBattlefield();
         }
     }
 }

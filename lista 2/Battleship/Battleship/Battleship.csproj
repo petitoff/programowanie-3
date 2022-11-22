@@ -56,6 +56,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\AddShipPositionCommand.cs" />
+    <Compile Include="Command\ExecuteRestartGameCommand.cs" />
+    <Compile Include="Command\ExecuteSubmitReadyCommand.cs" />
     <Compile Include="Command\ShootShipPositionCommand.cs" />
     <Compile Include="Const\IsShootGoodEnum.cs" />
     <Compile Include="Const\Player.cs" />
