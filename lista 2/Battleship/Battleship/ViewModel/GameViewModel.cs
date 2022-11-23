@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using Battleship.Command;
@@ -10,9 +9,6 @@ namespace Battleship.ViewModel
 {
     public class GameViewModel : BaseViewModel
     {
-        private int _player1Score;
-        private int _player2Score;
-
         private IsReady _isPlayer1Ready;
         private IsReady _isPlayer2Ready;
 
@@ -28,26 +24,6 @@ namespace Battleship.ViewModel
         public ObservableCollection<BattlefieldShoot> BattlefieldShoot1 { get; }
         public ObservableCollection<BattlefieldShoot> Battlefield2 { get; }
         public ObservableCollection<BattlefieldShoot> BattlefieldShoot2 { get; }
-
-        public int Player1Score
-        {
-            get => _player1Score;
-            set
-            {
-                _player1Score = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public int Player2Score
-        {
-            get => _player2Score;
-            set
-            {
-                _player2Score = value;
-                OnPropertyChanged();
-            }
-        }
 
         public IsReady IsPlayer1Ready
         {
@@ -73,7 +49,7 @@ namespace Battleship.ViewModel
         public Player PlayerTurn
         {
             get => _playerTurn;
-            set
+            private set
             {
                 _playerTurn = value;
                 OnPropertyChanged();
@@ -95,7 +71,6 @@ namespace Battleship.ViewModel
 
             InitBattlefield();
         }
-
 
         private void SubmitReadyPositionPlayer1(object obj)
         {
@@ -196,6 +171,12 @@ namespace Battleship.ViewModel
 
         private void ValidateShoot(BattlefieldShoot battlefield)
         {
+
+            if (IsPlayer1Ready == IsReady.NotReady || IsPlayer2Ready == IsReady.NotReady)
+            {
+                return;
+            }
+
             switch (PlayerTurn)
             {
                 case Player.Player1 when battlefield.Player == Player.Player1:
@@ -219,14 +200,13 @@ namespace Battleship.ViewModel
             {
                 foundShoot.IsShootGood = IsShootGoodEnum.Miss;
                 found.IsShootGood = IsShootGoodEnum.Miss;
+                PlayerTurn = PlayerTurn == Player.Player1 ? Player.Player2 : Player.Player1;
             }
             else
             {
                 foundShoot.IsShootGood = IsShootGoodEnum.Hit;
                 found.IsShootGood = IsShootGoodEnum.Hit;
             }
-
-            PlayerTurn = PlayerTurn == Player.Player1 ? Player.Player2 : Player.Player1;
         }
 
         public void RestartGame()

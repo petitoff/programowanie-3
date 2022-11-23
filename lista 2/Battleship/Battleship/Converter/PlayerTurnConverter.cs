@@ -9,15 +9,22 @@ namespace Battleship.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var playerTurn = (Player)value;
-
-            if (playerTurn == Player.Player1)
+            if (value != null)
             {
-                return "Kolej gracza 1";
+                var playerTurn = (Player)value;
+
+                if (playerTurn == Player.Player1)
+                {
+                    return "Kolej gracza 1";
+                }
+                else
+                {
+                    return "Kolej gracza 2";
+                }
             }
             else
             {
-                return "Kolej gracza 2";
+                return "Kolej gracza ?";
             }
         }
 

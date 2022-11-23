@@ -9,16 +9,10 @@ namespace Battleship.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var isPlayerReady = (IsReady)value;
+            var isPlayerReady = (IsReady?)value;
 
-            if (isPlayerReady == IsReady.Ready)
-            {
-                return "Ready";
-            }
-            else
-            {
-                return "Not Ready";
-            }
+            return isPlayerReady == IsReady.Ready ? "Ready" : "Not Ready";
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

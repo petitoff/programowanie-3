@@ -13,16 +13,9 @@ namespace Battleship.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var isPlayerReady = (IsReady)value;
+            var isPlayerReady = (IsReady?)value;
 
-            if (isPlayerReady == IsReady.Ready)
-            {
-                return "#4ceb34";
-            }
-            else
-            {
-                return "#eb3434";
-            }
+            return isPlayerReady == IsReady.Ready ? "#4ceb34" : "#eb3434";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
