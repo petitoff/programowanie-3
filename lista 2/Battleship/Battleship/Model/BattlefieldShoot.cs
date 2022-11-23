@@ -8,8 +8,6 @@ namespace Battleship.Model
     {
         private IsShootGoodEnum _isShootGood;
         
-        public int[,] Field { get; set; }
-
         public Player Player { get; set; }
         public IsShootGoodEnum IsShootGood
         {
@@ -25,7 +23,7 @@ namespace Battleship.Model
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
