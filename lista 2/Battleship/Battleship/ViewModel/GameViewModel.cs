@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using Battleship.Command;
@@ -195,18 +196,13 @@ namespace Battleship.ViewModel
 
         private void ValidateShoot(BattlefieldShoot battlefield)
         {
-
-            if (PlayerTurn == Player.Player1 && battlefield.Player == Player.Player1)
+            switch (PlayerTurn)
             {
-                return;
+                case Player.Player1 when battlefield.Player == Player.Player1:
+                case Player.Player2 when battlefield.Player == Player.Player2:
+                    return;
             }
 
-            if (PlayerTurn == Player.Player2 && battlefield.Player == Player.Player2)
-            {
-                return;
-            }
-                
-                
             var found = battlefield.Player == Player.Player1 ? Battlefield1.FirstOrDefault(x => x.Id == battlefield.Id) : Battlefield2.FirstOrDefault(x => x.Id == battlefield.Id);
             if (found == null)
             {
