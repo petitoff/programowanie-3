@@ -4,9 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lista_3"
+        xmlns:view="clr-namespace:lista_3.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"
+        Height="450"
+        Width="800">
+
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <view:Controls/>
+
+        <DataGrid Grid.Row="1"
+                  ItemsSource="{Binding Customers}">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="EventSetter_OnHandler"/>
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
     </Grid>
 </Window>

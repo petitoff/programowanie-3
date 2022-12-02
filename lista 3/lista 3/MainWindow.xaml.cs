@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using lista_3.Model;
+using lista_3.ViewModel;
 
 namespace lista_3
 {
@@ -20,9 +22,22 @@ namespace lista_3
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly MainViewModel _viewModel;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            _viewModel = new MainViewModel();
+            DataContext = _viewModel;
+        }
+
+        private void EventSetter_OnHandler(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is DataGridRow row)
+            {
+                var emp = row.DataContext as Customer;
+            }
         }
     }
 }
