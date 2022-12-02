@@ -26,7 +26,8 @@
                 </Style>
             </StackPanel.Resources>
             <Button Content="Dodaj"
-                    Width="50" />
+                    Width="50"
+                    Command="{Binding AddNewCustomerCommand}"/>
             <Button Content="Zapisz"
                     Width="50" />
         </StackPanel>

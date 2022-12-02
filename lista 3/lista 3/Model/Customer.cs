@@ -33,12 +33,7 @@ namespace lista_3.Model
             }
         }
 
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public string Pesel { get; set; }
-
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

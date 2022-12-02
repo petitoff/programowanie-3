@@ -5,10 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lista_3"
         xmlns:view="clr-namespace:lista_3.View"
+        xmlns:viewModel="clr-namespace:lista_3.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="450"
         Width="800">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel />
+    </Window.DataContext>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -16,15 +21,24 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <view:Controls/>
+        <ContentControl Grid.Row="0"
+                        Content="{Binding SelectedViewModel}">
+            <ContentControl.ContentTemplate>
+                <DataTemplate>
+                    <view:Controls />
+                </DataTemplate>
+            </ContentControl.ContentTemplate>
+        </ContentControl>
 
-        <DataGrid Grid.Row="1"
-                  ItemsSource="{Binding Customers}">
-            <DataGrid.Resources>
-                <Style TargetType="DataGridRow">
-                    <EventSetter Event="MouseDoubleClick" Handler="EventSetter_OnHandler"/>
-                </Style>
-            </DataGrid.Resources>
-        </DataGrid>
+
+        <ContentControl Grid.Row="1"
+                        Content="{Binding SelectedViewModel}">
+            <ContentControl.ContentTemplate>
+                <DataTemplate>
+                    <view:CustomersView />
+                </DataTemplate>
+            </ContentControl.ContentTemplate>
+        </ContentControl>
+
     </Grid>
 </Window>

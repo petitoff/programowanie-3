@@ -5,16 +5,23 @@ namespace lista_3.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
-        public ObservableCollection<Customer> Customers { get; }
+        public readonly CustomersViewModel CustomersViewModel;
+        private BaseViewModel _selectedViewModel;
 
         public MainViewModel()
         {
-            Customers = new ObservableCollection<Customer>
-                {
-                    new Customer { FirstName = "John", LastName = "Smith" },
-                    new Customer { FirstName = "Jane", LastName = "Doe"},
-                    new Customer { FirstName = "Jack", LastName = "Black"}
-                };
+            CustomersViewModel = new CustomersViewModel();
+            SelectedViewModel = CustomersViewModel;
+        }
+
+        public BaseViewModel SelectedViewModel
+        {
+            get => _selectedViewModel;
+            set
+            {
+                _selectedViewModel = value;
+                OnPropertyChanged();
+            }
         }
     }
 }

@@ -10,28 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using lista_3.Model;
-using lista_3.ViewModel;
 
-namespace lista_3
+namespace lista_3.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AddCustomerView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddCustomerView : Window
     {
-        private readonly MainViewModel _viewModel;
-
-        public MainWindow()
+        public AddCustomerView()
         {
             InitializeComponent();
-
-            _viewModel = new MainViewModel();
-            DataContext = _viewModel;
         }
-
-
     }
 }
