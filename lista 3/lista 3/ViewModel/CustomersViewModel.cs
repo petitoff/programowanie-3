@@ -90,6 +90,8 @@ namespace lista_3.ViewModel
                 string path = openFileDialog.FileName;
                 var newCustomers = CustomersDeserialize.DeserializeFromXml<ObservableCollection<Customer>>(path);
                 Customers.Clear();
+
+                if (newCustomers == null) return;
                 foreach (var newCustomer in newCustomers)
                 {
                     Customers.Add(newCustomer);
