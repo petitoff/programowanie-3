@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using lista_3.Command;
 using lista_3.Model;
+using lista_3.Service;
 using lista_3.View;
 
 namespace lista_3.ViewModel
@@ -23,6 +24,8 @@ namespace lista_3.ViewModel
             Customers.CollectionChanged += Customers_CollectionChanged;
 
             AddNewCustomerCommand = new DelegateCommand(AddNewCustomer);
+            SaveCustomersCommand = new DelegateCommand(SaveCustomers);
+
             AddNewCustomerViewModel = new AddNewCustomerViewModel(this);
             AddCustomerView = new AddCustomerView();
 
@@ -32,6 +35,7 @@ namespace lista_3.ViewModel
 
         public ObservableCollection<Customer> Customers { get; }
         public DelegateCommand AddNewCustomerCommand { get; }
+        public DelegateCommand SaveCustomersCommand { get; }
 
         public int NumberOfCustomers
         {
@@ -54,6 +58,11 @@ namespace lista_3.ViewModel
         {
             AddCustomerView.DataContext = AddNewCustomerViewModel;
             AddCustomerView.ShowDialog();
+        }
+
+        private void SaveCustomers(object? obj)
+        {
+            CustomersSerialize.SerializeToXml(Customers, $"C:\\Users\\petit\\Desktop\\repos\\programowanie-3\\text.xml");
         }
 
         private void GetCustomers()
