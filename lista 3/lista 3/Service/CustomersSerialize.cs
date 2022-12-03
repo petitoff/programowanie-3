@@ -3,13 +3,14 @@ using System.Xml.Serialization;
 
 namespace lista_3.Service
 {
-    public class CustomersSerialize
+    public static class CustomersSerialize
     {
         public static void SerializeToXml<T>(T modelObject, string xmlFilePath)
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(modelObject.GetType());
+            var xmlSerializer = new XmlSerializer(modelObject?.GetType()!);
 
-            using (StreamWriter writer = File.CreateText(xmlFilePath))
+            using var writer = File.CreateText(xmlFilePath);
+            if (modelObject != null)
             {
                 xmlSerializer.Serialize(writer, modelObject);
             }

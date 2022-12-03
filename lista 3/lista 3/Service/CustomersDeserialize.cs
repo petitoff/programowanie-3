@@ -8,16 +8,14 @@ using System.Xml.Serialization;
 
 namespace lista_3.Service
 {
-    public class CustomersDeserialize
+    public static class CustomersDeserialize
     {
         public static T DeserializeFromXml<T>(string filepath) where T : class
         {
-            XmlSerializer ser = new XmlSerializer(typeof(T));
+            var xmlSerializer = new XmlSerializer(typeof(T));
 
-            using (StreamReader sr = new StreamReader(filepath))
-            {
-                return (T)ser.Deserialize(sr);
-            }
+            using var sr = new StreamReader(filepath);
+            return (T)xmlSerializer.Deserialize(sr);
         }
     }
 }
