@@ -1,10 +1,12 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using lista_3.Command;
 using lista_3.Model;
 using lista_3.Service;
 using lista_3.View;
+using Microsoft.Win32;
 
 namespace lista_3.ViewModel
 {
@@ -21,6 +23,7 @@ namespace lista_3.ViewModel
 
             AddNewCustomerCommand = new DelegateCommand(AddNewCustomer);
             SaveCustomersCommand = new DelegateCommand(SaveCustomers);
+            LoadCustomersCommand = new DelegateCommand(LoadCustomers);
 
             AddNewCustomerViewModel = new AddNewCustomerViewModel(this);
             AddCustomerView = new AddCustomerView();
@@ -32,6 +35,7 @@ namespace lista_3.ViewModel
         public ObservableCollection<Customer> Customers { get; }
         public DelegateCommand AddNewCustomerCommand { get; }
         public DelegateCommand SaveCustomersCommand { get; }
+        public DelegateCommand LoadCustomersCommand { get; }
 
         public int NumberOfCustomers
         {
@@ -58,7 +62,33 @@ namespace lista_3.ViewModel
 
         private void SaveCustomers(object? obj)
         {
-            CustomersSerialize.SerializeToXml(Customers, $"C:\\Users\\petit\\Desktop\\repos\\programowanie-3\\text.xml");
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "Zapisz klientów";
+            saveFileDialog.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string path = saveFileDialog.FileName;
+                CustomersSerialize.SerializeToXml(Customers, path);
+            }
+        }
+
+        private void LoadCustomers(object? obj)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Wczytaj klientów";
+            openFileDialog.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string path = openFileDialog.FileName;
+                var newCustomers = CustomersDeserialize.DeserializeFromXml<ObservableCollection<Customer>>(path);
+                Customers.Clear();
+                foreach (var newCustomer in newCustomers)
+                {
+                    Customers.Add(newCustomer);
+                }
+            }
         }
 
         private void GetCustomers()

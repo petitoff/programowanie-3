@@ -12,21 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace lista_3.View
+namespace lista_3.Window
 {
     /// <summary>
-    /// Interaction logic for AddCustomerView.xaml
+    /// Interaction logic for SecondWindow.xaml
     /// </summary>
-    public partial class AddCustomerView : System.Windows.Window
+    public partial class SecondWindow : System.Windows.Window
     {
-        public AddCustomerView()
+        public SecondWindow()
         {
             InitializeComponent();
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            this.Visibility = Visibility.Collapsed;
         }
     }
 }

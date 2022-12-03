@@ -44,7 +44,10 @@
                     Command="{Binding AddNewCustomerCommand}" />
             <Button Content="Zapisz"
                     Width="50"
-                    Command="{Binding SaveCustomersCommand}"/>
+                    Command="{Binding SaveCustomersCommand}" />
+            <Button Content="Wczytaj"
+                    Width="50"
+                    Command="{Binding LoadCustomersCommand}" />
         </StackPanel>
     </Grid>
 </UserControl>
