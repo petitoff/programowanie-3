@@ -6,8 +6,7 @@
         mc:Ignorable="d"
         Title="AddCustomerView"
         Height="315"
-        Width="460"
-        Closing="Window_Closing">
+        Width="460">
 
     <Grid>
         <Grid.RowDefinitions>

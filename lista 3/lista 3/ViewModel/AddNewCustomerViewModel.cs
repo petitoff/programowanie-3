@@ -18,11 +18,6 @@ namespace lista_3.ViewModel
             AddNewCustomerCommand = new DelegateCommand(AddNewCustomer);
         }
 
-        public AddNewCustomerViewModel()
-        {
-            throw new System.NotImplementedException();
-        }
-
         private void AddNewCustomer(object? obj)
         {
             _customersViewModel.GetDataAndCloseAddNewCustomerViewModel(Customer);
