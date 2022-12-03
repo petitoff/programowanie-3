@@ -14,7 +14,7 @@ namespace lista_3.Command
 
         public event EventHandler? CanExecuteChanged;
 
-        public DelegateCommand(Action<object?> execute, Func<object?, bool>? canExecute = null)
+        public DelegateCommand(Action<object> execute, Func<object?, bool>? canExecute = null)
         {
             _execute = execute;
             _canExecute = canExecute;

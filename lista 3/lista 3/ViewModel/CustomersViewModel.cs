@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using lista_3.Command;
@@ -12,9 +11,10 @@ namespace lista_3.ViewModel
 {
     public class CustomersViewModel : BaseViewModel
     {
-        public readonly AddCustomerView AddCustomerView;
+        public AddCustomerView AddCustomerView;
         private int _numberOfCustomers;
         private AddNewCustomerViewModel AddNewCustomerViewModel { get; set; }
+        private bool _isAddCustomerViewVisible;
 
         public CustomersViewModel()
         {
@@ -26,7 +26,6 @@ namespace lista_3.ViewModel
             LoadCustomersCommand = new DelegateCommand(LoadCustomers);
 
             AddNewCustomerViewModel = new AddNewCustomerViewModel(this);
-            AddCustomerView = new AddCustomerView();
 
             // for debug
             GetCustomers();
@@ -51,13 +50,23 @@ namespace lista_3.ViewModel
         public void GetDataAndCloseAddNewCustomerViewModel(Customer customer)
         {
             Customers.Add(customer);
-            AddCustomerView.Visibility = Visibility.Collapsed;
+            AddCustomerView.Close();
+            _isAddCustomerViewVisible = false;
         }
 
         private void AddNewCustomer(object obj)
         {
-            AddCustomerView.DataContext = AddNewCustomerViewModel;
-            AddCustomerView.ShowDialog();
+            if (_isAddCustomerViewVisible)
+            {
+                return;
+            }
+
+            _isAddCustomerViewVisible = true;
+            AddCustomerView = new AddCustomerView
+            {
+                DataContext = AddNewCustomerViewModel
+            };
+            AddCustomerView.Show();
         }
 
         private void SaveCustomers(object? obj)
