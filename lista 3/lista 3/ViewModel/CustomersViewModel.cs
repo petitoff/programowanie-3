@@ -26,9 +26,6 @@ namespace lista_3.ViewModel
             LoadCustomersCommand = new DelegateCommand(LoadCustomers);
 
             AddNewCustomerViewModel = new AddNewCustomerViewModel(this);
-
-            // for debug
-            GetCustomers();
         }
 
         public ObservableCollection<Customer> Customers { get; }
@@ -98,15 +95,6 @@ namespace lista_3.ViewModel
                     Customers.Add(newCustomer);
                 }
             }
-        }
-
-        private void GetCustomers()
-        {
-            Customers.Add(new Customer
-            {
-                FirstName = "test",
-                LastName = "test2"
-            });
         }
 
         private void Customers_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
