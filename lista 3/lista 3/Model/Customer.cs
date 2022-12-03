@@ -7,11 +7,11 @@ namespace lista_3.Model
 {
     public class Customer : INotifyPropertyChanged
     {
-        private string _firstName;
-        private string _lastName;
+        private string? _firstName;
+        private string? _lastName;
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string FirstName
+        public string? FirstName
         {
             get => _firstName;
             set
@@ -22,7 +22,7 @@ namespace lista_3.Model
             }
         }
 
-        public string LastName
+        public string? LastName
         {
             get => _lastName;
             set

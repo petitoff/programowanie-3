@@ -1,18 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using lista_3.Model;
+﻿using System.Windows;
 using lista_3.ViewModel;
 
 namespace lista_3
@@ -28,10 +14,13 @@ namespace lista_3
         {
             InitializeComponent();
 
-            _viewModel = new MainViewModel();
+            _viewModel = new MainViewModel(new CustomersViewModel());
             DataContext = _viewModel;
         }
 
-
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            _viewModel.CustomersViewModel.AddCustomerView.Close();
+        }
     }
 }

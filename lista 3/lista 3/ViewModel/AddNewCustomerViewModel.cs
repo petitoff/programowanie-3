@@ -5,7 +5,7 @@ namespace lista_3.ViewModel
 {
     public class AddNewCustomerViewModel
     {
-        private Customer Customer { get; set; }
+        public Customer Customer { get; set; }
 
         public DelegateCommand AddNewCustomerCommand { get; }
         private readonly CustomersViewModel _customersViewModel;
@@ -16,6 +16,11 @@ namespace lista_3.ViewModel
 
             Customer = new Customer();
             AddNewCustomerCommand = new DelegateCommand(AddNewCustomer);
+        }
+
+        public AddNewCustomerViewModel()
+        {
+            throw new System.NotImplementedException();
         }
 
         private void AddNewCustomer(object? obj)

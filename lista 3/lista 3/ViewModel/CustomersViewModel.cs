@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using lista_3.Command;
 using lista_3.Model;
 using lista_3.View;
@@ -12,37 +13,61 @@ namespace lista_3.ViewModel
 {
     public class CustomersViewModel : BaseViewModel
     {
-        private AddNewCustomerViewModel _addNewCustomerViewModel;
-        private AddCustomerView _addCustomerView;
-        public ObservableCollection<Customer> Customers { get; }
-        public DelegateCommand AddNewCustomerCommand { get; }
+        public readonly AddCustomerView AddCustomerView;
+        private int _numberOfCustomers;
+        private AddNewCustomerViewModel AddNewCustomerViewModel { get; set; }
 
         public CustomersViewModel()
         {
-            Customers = new ObservableCollection<Customer>
-            {
-                new Customer { FirstName = "John", LastName = "Smith" },
-                new Customer { FirstName = "Jane", LastName = "Doe"},
-                new Customer { FirstName = "Jack", LastName = "Black"}
-            };
+            Customers = new ObservableCollection<Customer>();
+            Customers.CollectionChanged += Customers_CollectionChanged;
 
             AddNewCustomerCommand = new DelegateCommand(AddNewCustomer);
-            _addNewCustomerViewModel = new AddNewCustomerViewModel(this);
+            AddNewCustomerViewModel = new AddNewCustomerViewModel(this);
+            AddCustomerView = new AddCustomerView();
+
+            // for debug
+            GetCustomers();
         }
 
-        private void AddNewCustomer(object obj)
+        public ObservableCollection<Customer> Customers { get; }
+        public DelegateCommand AddNewCustomerCommand { get; }
+
+        public int NumberOfCustomers
         {
-            _addCustomerView = new AddCustomerView
+            get => _numberOfCustomers;
+            set
             {
-                DataContext = _addNewCustomerViewModel
-            };
-            _addCustomerView.Show();
+                if (value == _numberOfCustomers) return;
+                _numberOfCustomers = value;
+                OnPropertyChanged();
+            }
         }
 
         public void GetDataAndCloseAddNewCustomerViewModel(Customer customer)
         {
             Customers.Add(customer);
-            _addCustomerView.Close();
+            AddCustomerView.Visibility = Visibility.Collapsed;
+        }
+
+        private void AddNewCustomer(object obj)
+        {
+            AddCustomerView.DataContext = AddNewCustomerViewModel;
+            AddCustomerView.ShowDialog();
+        }
+
+        private void GetCustomers()
+        {
+            Customers.Add(new Customer
+            {
+                FirstName = "test",
+                LastName = "test2"
+            });
+        }
+
+        private void Customers_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            NumberOfCustomers = Customers.Count();
         }
     }
 }

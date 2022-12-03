@@ -5,12 +5,12 @@ namespace lista_3.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
-        public readonly CustomersViewModel CustomersViewModel;
+        public CustomersViewModel CustomersViewModel { get; set; }
         private BaseViewModel _selectedViewModel;
 
-        public MainViewModel()
+        public MainViewModel(CustomersViewModel customersViewModel)
         {
-            CustomersViewModel = new CustomersViewModel();
+            CustomersViewModel = customersViewModel;
             SelectedViewModel = CustomersViewModel;
         }
 
