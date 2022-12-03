@@ -17,10 +17,5 @@ namespace lista_3
             _viewModel = new MainViewModel(new CustomersViewModel());
             DataContext = _viewModel;
         }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            _viewModel.CustomersViewModel.AddCustomerView.Close();
-        }
     }
 }

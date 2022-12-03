@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using lista_3.Model;
-
-namespace lista_3.ViewModel
+﻿namespace lista_3.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
