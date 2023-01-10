@@ -5,8 +5,74 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lista_6"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"
+        Height="450"
+        Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="60"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Employee ID" />
+                <TextBox x:Name="txtID"
+                         Width="100" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Employee Name" />
+                <TextBox x:Name="txtName"
+                         Width="100" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Employee City" />
+                <TextBox x:Name="txtCity"
+                         Width="100" />
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Employee Age" />
+                <TextBox x:Name="txtAge"
+                         Width="100" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Employee Sex" />
+                <TextBox x:Name="txtSex"
+                         Width="100" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Employee Joining Date" />
+                <!--add small DateTime here-->
+                <DatePicker x:Name="txtJoiningDate"
+                            Width="100" />
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Employee Contact" />
+                <TextBox x:Name="txtContact"
+                         Width="100"
+                         Text="123456789" />
+            </StackPanel>
+        </StackPanel>
         
+        <StackPanel Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <Button Content="Insert"
+                    Click="Button_Click"
+                    Width="100"
+                    Height="50" />
+        </StackPanel>
+        
+        <DataGrid Grid.Row="3" x:Name="DataGridEmp"></DataGrid>
     </Grid>
 </Window>
