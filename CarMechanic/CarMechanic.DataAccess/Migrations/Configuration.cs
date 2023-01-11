@@ -16,7 +16,7 @@ namespace CarMechanic.DataAccess.Migrations
 
         protected override void Seed(CarMechanic.DataAccess.CarMechanicDbContext context)
         {
-            context.Customer.AddOrUpdate(f => f.FirstName,
+            context.Customers.AddOrUpdate(f => f.FirstName,
                 new Customer
                 {
                     FirstName = "John",
