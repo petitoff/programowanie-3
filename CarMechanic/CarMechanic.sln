@@ -5,6 +5,10 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarMechanic.UI", "CarMechanic.UI\CarMechanic.UI.csproj", "{C7A5AFE3-9831-4173-8418-493665F01933}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarMechanic.DataAccess", "CarMechanic.DataAccess\CarMechanic.DataAccess.csproj", "{F335AA4D-D9C7-45B0-B29E-B8C1D332A920}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarMechanic.Model", "CarMechanic.Model\CarMechanic.Model.csproj", "{E92EC435-DD1E-4D3D-981B-E8B1C2C047B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{C7A5AFE3-9831-4173-8418-493665F01933}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7A5AFE3-9831-4173-8418-493665F01933}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7A5AFE3-9831-4173-8418-493665F01933}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F335AA4D-D9C7-45B0-B29E-B8C1D332A920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F335AA4D-D9C7-45B0-B29E-B8C1D332A920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F335AA4D-D9C7-45B0-B29E-B8C1D332A920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F335AA4D-D9C7-45B0-B29E-B8C1D332A920}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E92EC435-DD1E-4D3D-981B-E8B1C2C047B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E92EC435-DD1E-4D3D-981B-E8B1C2C047B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E92EC435-DD1E-4D3D-981B-E8B1C2C047B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E92EC435-DD1E-4D3D-981B-E8B1C2C047B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
