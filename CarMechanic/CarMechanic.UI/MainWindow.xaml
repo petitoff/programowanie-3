@@ -4,13 +4,124 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarMechanic.UI"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         Title="CarMechanic"
-        Height="600"
-        Width="1000">
-    <Grid>
-        <!--display the data here in datagrid-->
-        <DataGrid AutoGenerateColumns="True"
-                  ItemsSource="{Binding Customers}" />
-    </Grid>
+        Height="720"
+        Width="1000"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent">
+
+
+    <Border Background="#eff2f7"
+            CornerRadius="30"
+            MouseDown="UIElement_OnMouseDown"
+            MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!--Left Menu-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!--Menu Icon-->
+                <Button Margin="20 28 0 35"
+                        Style="{StaticResource TopButton}">
+                    <iconPacks:PackIconMaterial Kind="Menu"
+                                                Width="15"
+                                                Height="15" />
+                </Button>
+
+                <Border Grid.Row="1"
+                        Background="#623ed0"
+                        CornerRadius="0 50 0 30">
+                    <DockPanel>
+                        <!--Menu Logo-->
+                        <Border Width="80"
+                                Height="80"
+                                Padding="3"
+                                Background="White"
+                                CornerRadius="100"
+                                DockPanel.Dock="Top"
+                                HorizontalAlignment="Left"
+                                Margin="20 -30 0 0">
+                            <Ellipse>
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="Assets/Images/ProfileMan.png"></ImageBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+
+                        <!--Menu Titles-->
+                        <TextBlock Text="Andrzej Nosiwąs"
+                                   Foreground="White"
+                                   FontSize="22"
+                                   FontWeight="SemiBold"
+                                   DockPanel.Dock="Top"
+                                   TextAlignment="Center"
+                                   Margin="5 25 0 10" />
+                        <TextBlock Text="Główny mechanik"
+                                   Foreground="#d0bfff"
+                                   FontSize="14"
+                                   FontWeight="SemiBold"
+                                   DockPanel.Dock="Top"
+                                   TextAlignment="Center" />
+
+                        <!--Menu Separator-->
+                        <Separator Margin="25"
+                                   DockPanel.Dock="Top"
+                                   Height="0.8"
+                                   Background="#7e5fdc" />
+
+                        <!--Menu Buttons-->
+                        <StackPanel DockPanel.Dock="Top">
+                            <Button Style="{StaticResource MenuButton}">
+                                <StackPanel Orientation="Horizontal">
+                                    <iconPacks:PackIconMaterial Kind="HomeVariant" Style="{StaticResource MenuButtonIcon}" />
+                                    <TextBlock Text="Dashboard" />
+
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource MenuButton}">
+                                <StackPanel Orientation="Horizontal">
+                                    <iconPacks:PackIconMaterial Kind="Calendar"
+                                                                Style="{StaticResource MenuButtonIcon}" />
+                                    <TextBlock Text="Calendar" />
+
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource MenuButton}">
+                                <StackPanel Orientation="Horizontal">
+                                    <iconPacks:PackIconMaterial Kind="Account"
+                                                                Style="{StaticResource MenuButtonIcon}" />
+                                    <TextBlock Text="Customer" />
+
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource MenuButton}">
+                                <StackPanel Orientation="Horizontal">
+                                    <iconPacks:PackIconMaterial Kind="Car"
+                                                                Style="{StaticResource MenuButtonIcon}" />
+                                    <TextBlock Text="Works" />
+
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </DockPanel>
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
 </Window>

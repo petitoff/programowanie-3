@@ -23,6 +23,7 @@ namespace CarMechanic.UI
     public partial class MainWindow : Window
     {
         private readonly MainViewModel _viewModel;
+        private bool _isMaximized;
 
         public MainWindow(MainViewModel viewModel)
         {
@@ -38,6 +39,34 @@ namespace CarMechanic.UI
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             await _viewModel.OnLoad();
+        }
+
+        private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void UIElement_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                if (_isMaximized)
+                {
+                    this.WindowState = WindowState.Normal;
+                    this.Width = 1080;
+                    this.Height = 720;
+                }
+                else
+                {
+                    this.WindowState = WindowState.Maximized;
+                }
+
+                _isMaximized = !_isMaximized;
+
+            }
         }
     }
 }
