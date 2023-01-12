@@ -1,18 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using CarMechanic.DataAccess;
 using CarMechanic.Model;
+using System;
+using System.Data.Entity;
+using System.Threading.Tasks;
 
 namespace CarMechanic.UI.Data
 {
     public class CustomerDataService : ICustomerDataService
     {
-        public IEnumerable<Customer> GetAllCustomers()
+        private readonly Func<CarMechanicDbContext> _contextCreator;
+
+        public CustomerDataService(Func<CarMechanicDbContext> contextCreator)
         {
-            using (var ctx = new CarMechanicDbContext())
+            _contextCreator = contextCreator;
+        }
+
+        public async Task<List<Customer>> GetAllCustomers()
+        {
+            using (var ctx = _contextCreator())
             {
-                return ctx.Customers.AsNoTracking().ToList();
+                return await ctx.Customers.AsNoTracking().ToListAsync();
             }
         }
     }
