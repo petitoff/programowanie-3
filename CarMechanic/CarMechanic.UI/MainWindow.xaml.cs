@@ -68,5 +68,15 @@ namespace CarMechanic.UI
 
             }
         }
+
+        private void MinimizeApp_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void CloseApp_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

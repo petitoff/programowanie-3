@@ -154,24 +154,89 @@
                 </Grid.RowDefinitions>
 
                 <!--Search Textbox-->
-                <Grid Width="300"
-                      HorizontalAlignment="Left">
-                    <TextBlock Margin="20 0"
-                               VerticalAlignment="Center"
-                               Foreground="#b0b9c6"
-                               IsHitTestVisible="False"
-                               Panel.ZIndex="1"
-                               Text="Search here ..."
-                               Visibility="{Binding ElementName=TxtSearch, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <Grid>
+                    <Grid Width="300"
+                          HorizontalAlignment="Left">
+                        <TextBlock Margin="20 0"
+                                   VerticalAlignment="Center"
+                                   Foreground="#b0b9c6"
+                                   IsHitTestVisible="False"
+                                   Panel.ZIndex="1"
+                                   Text="Search here ..."
+                                   Visibility="{Binding ElementName=TxtSearch, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
 
-                    <TextBox x:Name="TxtSearch"
-                             Style="{StaticResource TextBoxSearch}" />
+                        <TextBox x:Name="TxtSearch"
+                                 Style="{StaticResource TextBoxSearch}" />
 
-                    <iconPacks:PackIconMaterial Kind="Magnify"
-                                                VerticalAlignment="Center"
-                                                Margin="0 0 15 0"
-                                                Foreground="#b0b9c6"
-                                                HorizontalAlignment="Right" />
+                        <iconPacks:PackIconMaterial Kind="Magnify"
+                                                    VerticalAlignment="Center"
+                                                    Margin="0 0 15 0"
+                                                    Foreground="#b0b9c6"
+                                                    HorizontalAlignment="Right" />
+
+                    </Grid>
+                    <StackPanel VerticalAlignment="Center"
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="Ellipse">
+                                <Setter Property="Width"
+                                        Value="15" />
+                                <Setter Property="Height"
+                                        Value="15" />
+                                <Setter Property="Margin"
+                                        Value="3 0" />
+                            </Style>
+                        </StackPanel.Resources>
+                        <Ellipse Fill="Orange"
+                                 MouseLeftButtonDown="MinimizeApp_OnMouseLeftButtonDown">
+                            <Ellipse.Triggers>
+                                <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)"
+                                                            To="OrangeRed"
+                                                            Duration="0:0:0.5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)"
+                                                            To="Orange"
+                                                            Duration="0:0:0.5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Ellipse.Triggers>
+                        </Ellipse>
+
+                        <Ellipse Fill="Red"
+                                 MouseLeftButtonDown="CloseApp_OnMouseLeftButtonDown">
+                            <Ellipse.Triggers>
+                                <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)"
+                                                            To="DarkRed"
+                                                            Duration="0:0:0.5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)"
+                                                            To="Red"
+                                                            Duration="0:0:0.5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Ellipse.Triggers>
+                        </Ellipse>
+
+                    </StackPanel>
                 </Grid>
             </Grid>
         </Grid>

@@ -95,7 +95,7 @@
             <Setter Property="Background"
                     Value="#fff" />
             <Setter Property="Foreground"
-                    Value="#b0b9c6" />
+                    Value="#7b5cd6" />
             <Setter Property="BorderThickness"
                     Value="0" />
             <Setter Property="FontSize"
