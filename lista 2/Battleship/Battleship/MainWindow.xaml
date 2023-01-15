@@ -34,7 +34,7 @@
                     CommandParameter="{Binding .}" />
             <Button Content="Reset"
                     Command="{Binding RestartGameCommand}" />
-            <Button Content="Rotacja statku" />
+            <!--<Button Content="Rotacja statku" />-->
 
             <TextBlock Margin="0 10 0 0"
                        Text="{Binding PlayerTurn, Converter={StaticResource PlayerTurnConverter}}" />
