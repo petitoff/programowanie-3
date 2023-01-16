@@ -14,7 +14,7 @@ namespace CarMechanic.DataAccess.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(CarMechanic.DataAccess.CarMechanicDbContext context)
+        protected override void Seed(CarMechanicDbContext context)
         {
             context.Customers.AddOrUpdate(f => f.FirstName,
                 new Customer
@@ -23,6 +23,13 @@ namespace CarMechanic.DataAccess.Migrations
                     LastName = "Loe"
                 },
                 new Customer { FirstName = "Dock", LastName = "Werk" });
+
+            context.Employers.AddOrUpdate(f => f.FirstName,
+                new Employer
+                {
+                    FirstName = "Andrzej",
+                    LastName = "Nosiwąs",
+                });
         }
     }
 }

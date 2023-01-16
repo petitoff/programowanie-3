@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace CarMechanic.UI {
+namespace CarMechanic.DataAccess {
     
     
     /// <summary>
@@ -1753,7 +1753,7 @@ namespace CarMechanic.UI {
         }
     }
 }
-namespace CarMechanic.UI.CarMechanicDataSetTableAdapters {
+namespace CarMechanic.DataAccess.CarMechanicDataSetTableAdapters {
     
     
     /// <summary>
@@ -1918,7 +1918,7 @@ SELECT MigrationId, ContextKey, Model, ProductVersion FROM __MigrationHistory WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CarMechanic.UI.Properties.Settings.Default.CarMechanicConnection;
+            this._connection.ConnectionString = "Data Source=.;Initial Catalog=CarMechanic;Integrated Security=True";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2313,7 +2313,7 @@ SELECT Id, FirstName, LastName, Address, Phone, Email FROM Customer WHERE (Id = 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CarMechanic.UI.Properties.Settings.Default.CarMechanicConnection;
+            this._connection.ConnectionString = "Data Source=.;Initial Catalog=CarMechanic;Integrated Security=True";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2721,7 +2721,7 @@ SELECT Id, FirstName, LastName, Role, Login, Password FROM Employer WHERE (Id = 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CarMechanic.UI.Properties.Settings.Default.CarMechanicConnection;
+            this._connection.ConnectionString = "Data Source=.;Initial Catalog=CarMechanic;Integrated Security=True";
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

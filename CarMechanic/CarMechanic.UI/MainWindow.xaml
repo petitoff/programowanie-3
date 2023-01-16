@@ -65,14 +65,14 @@
                         </Border>
 
                         <!--Menu Titles-->
-                        <TextBlock Text="Andrzej Nosiwąs"
+                        <TextBlock Text="{Binding NameOfUser}"
                                    Foreground="White"
                                    FontSize="22"
                                    FontWeight="SemiBold"
                                    DockPanel.Dock="Top"
                                    TextAlignment="Center"
                                    Margin="5 25 0 10" />
-                        <TextBlock Text="Główny mechanik"
+                        <TextBlock Text="{Binding RoleOfUser}"
                                    Foreground="#d0bfff"
                                    FontSize="14"
                                    FontWeight="SemiBold"
@@ -128,7 +128,7 @@
                         <Button Style="{StaticResource MenuButton}"
                                 VerticalAlignment="Bottom"
                                 DockPanel.Dock="Bottom"
-                                Margin="15 0">
+                                Margin="15">
                             <StackPanel Orientation="Horizontal">
                                 <iconPacks:PackIconMaterial Kind="Logout"
                                                             Style="{StaticResource MenuButtonIcon}" />
@@ -187,7 +187,24 @@
                                 <Setter Property="Margin"
                                         Value="3 0" />
                             </Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Margin"
+                                        Value="0 0 20 0" />
+                            </Style>
                         </StackPanel.Resources>
+
+                        <Button Style="{StaticResource TopButton}">
+                            <iconPacks:PackIconMaterial Kind="Bell" />
+                        </Button>
+
+                        <Button Style="{StaticResource TopButton}">
+                            <iconPacks:PackIconMaterial Kind="Cog" />
+                        </Button>
+
+                        <Separator Margin="0 0 20 0"
+                                   VerticalAlignment="Center"
+                                   Height="30" />
+
                         <Ellipse Fill="Orange"
                                  MouseLeftButtonDown="MinimizeApp_OnMouseLeftButtonDown">
                             <Ellipse.Triggers>

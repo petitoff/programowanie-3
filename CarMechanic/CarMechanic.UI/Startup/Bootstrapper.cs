@@ -17,6 +17,7 @@ namespace CarMechanic.UI.Startup
             builder.RegisterType<MainViewModel>().AsSelf();
 
             builder.RegisterType<CustomerDataService>().As<ICustomerDataService>();
+            builder.RegisterType<EmployerDataService>().As<IEmployerDataService>();
 
             return builder.Build();
         }

@@ -12,12 +12,12 @@ namespace CarMechanic.DataAccess
         }
 
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Employer> Employers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
         }
     }
 }
