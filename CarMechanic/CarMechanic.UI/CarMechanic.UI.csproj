@@ -169,7 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CarMechanic.DataAccess\CarMechanic.DataAccess.csproj">
-      <Project>{F335AA4D-D9C7-45B0-B29E-B8C1D332A920}</Project>
+      <Project>{237D616F-8220-4DA8-9570-23ED3A3F4021}</Project>
       <Name>CarMechanic.DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\CarMechanic.Model\CarMechanic.Model.csproj">

@@ -7,7 +7,7 @@ namespace CarMechanic.DataAccess
 {
     public class CarMechanicDbContext : DbContext
     {
-        public CarMechanicDbContext() : base("CarMechanicDb")
+        public CarMechanicDbContext() : base("CarMechanicNewDb")
         {
 
         }

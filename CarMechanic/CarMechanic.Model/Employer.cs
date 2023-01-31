@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarMechanic.Model
 {
@@ -9,6 +10,7 @@ namespace CarMechanic.Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Role { get; set; }
+        [ForeignKey("EmployerId")]
         public IList<Customer> Customers { get; set; }
     }
 }

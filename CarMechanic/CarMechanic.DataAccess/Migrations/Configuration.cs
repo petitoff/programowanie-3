@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using CarMechanic.Model;
-
-namespace CarMechanic.DataAccess.Migrations
+﻿namespace CarMechanic.DataAccess.Migrations
 {
+    using CarMechanic.Model;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -18,14 +16,12 @@ namespace CarMechanic.DataAccess.Migrations
         protected override void Seed(CarMechanic.DataAccess.CarMechanicDbContext context)
         {
             var employer1 = new Employer { FirstName = "John", LastName = "Doe", };
-            var employer2 = new Employer { FirstName = "John", LastName = "Doe", };
-            context.Employers.AddOrUpdate(e => e.FirstName, employer1, employer2);
+            context.Employers.AddOrUpdate(e => e.FirstName, employer1);
 
-            //var customer1 = new Customer { FirstName = "John", LastName = "Smith", EmployerId = employer1.Id };
-            //var customer2 = new Customer { FirstName = "Jane", LastName = "Doe", EmployerId = employer2.Id };
-            //context.Customers.AddOrUpdate(c => c.FirstName, customer1, customer2);
+            var customer1 = new Customer { FirstName = "John", LastName = "Smith", EmployerId = employer1.Id };
+            context.Customers.AddOrUpdate(c => c.FirstName, customer1);
 
-            //context.SaveChanges();
+            context.SaveChanges();
         }
     }
 }
