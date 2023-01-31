@@ -3,6 +3,7 @@ using System.Linq;
 using CarMechanic.Model;
 using CarMechanic.UI.Command;
 using CarMechanic.UI.Data;
+using CarMechanic.UI.ViewModel.CustomerItemViewModel;
 using CarMechanic.UI.Window;
 using Prism.Events;
 
@@ -15,22 +16,42 @@ namespace CarMechanic.UI.ViewModel
         private string _lastName;
         private readonly IEventAggregator _eventAggregator;
         private readonly IUserDataStore _userDataStore;
+        private BaseViewModel _selectedViewModel;
 
         public CustomersViewModel(IEmployerDataService employerDataService, IEventAggregator eventAggregator,
-            IUserDataStore userDataStore)
+            IUserDataStore userDataStore, AddCustomerViewModel addCustomerViewModel, EditCustomerViewModel editCustomerViewModel)
         {
             _employerDataService = employerDataService;
             _eventAggregator = eventAggregator;
             _userDataStore = userDataStore;
 
+            AddCustomerViewModel = addCustomerViewModel;
+            EditCustomerViewModel = editCustomerViewModel;
+            SelectedViewModel = AddCustomerViewModel;
+
             Customers = new ObservableCollection<Customer>();
-            OpenSecondWindowCommand = new DelegateCommand(OpenSecondWindow);
-            AddCustomerCommand = new DelegateCommand(AddCustomer);
+
+            OpenSecondWindowAddCustomerCommand = new DelegateCommand(OpenSecondWindowAddCustomer);
+            OpenSecondWindowEditCustomerCommand = new DelegateCommand(OpenSecondWindowEditCustomer);
+            
+            
         }
 
-        public ObservableCollection<Customer> Customers { get; set; }
-        public DelegateCommand OpenSecondWindowCommand { get; set; }
-        public DelegateCommand AddCustomerCommand { get; set; }
+        public BaseViewModel SelectedViewModel
+        {
+            get => _selectedViewModel;
+            set
+            {
+                _selectedViewModel = value;
+                OnPropertyChanged();
+            }
+        }
+        public AddCustomerViewModel AddCustomerViewModel { get; }
+        public EditCustomerViewModel EditCustomerViewModel { get; }
+        public ObservableCollection<Customer> Customers { get; }
+        public DelegateCommand OpenSecondWindowAddCustomerCommand { get; }
+        public DelegateCommand OpenSecondWindowEditCustomerCommand { get; }
+
         public string FirstName
         {
             get => _firstName;
@@ -59,10 +80,25 @@ namespace CarMechanic.UI.ViewModel
             LoadCustomers();
         }
 
-        private void OpenSecondWindow(object obj)
+        private void OpenSecondWindowAddCustomer(object obj)
         {
-            var secondWindow = new SecondWindow();
-            secondWindow.DataContext = this;
+            SelectedViewModel = AddCustomerViewModel;
+            OpenSecondWindow();
+        }
+        
+        private void OpenSecondWindowEditCustomer(object obj)
+        {
+            SelectedViewModel = EditCustomerViewModel;
+            EditCustomerViewModel.InsertData(obj as Customer);
+            OpenSecondWindow();
+        }
+
+        private void OpenSecondWindow()
+        {
+            var secondWindow = new SecondWindow
+            {
+                DataContext = this
+            };
             secondWindow.Show();
         }
 
@@ -72,13 +108,6 @@ namespace CarMechanic.UI.ViewModel
             var customers = await _employerDataService.GetCustomersByEmployerId(_userDataStore.CurrentUserId);
             Customers.Clear();
             customers.ToList().ForEach(Customers.Add);
-        }
-        #endregion
-
-        #region Button Method
-        private void AddCustomer(object obj)
-        {
-
         }
         #endregion
     }

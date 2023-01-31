@@ -5,84 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarMechanic.UI.Window"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:view="clr-namespace:CarMechanic.UI.View"
+        xmlns:viewModel="clr-namespace:CarMechanic.UI.ViewModel.CustomerItemViewModel"
         mc:Ignorable="d"
         Title="SecondWindow"
         Height="450"
         Width="700">
 
     <Window.Resources>
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <DataTemplate DataType="{x:Type viewModel:AddCustomerViewModel}">
+            <view:AddCustomerView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:EditCustomerViewModel}">
+            <view:EditCustomerView />
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <Grid Width="250">
-            <TextBlock Text="Add customer"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
-                       FontSize="25" />
-            <iconPacks:PackIconMaterial Kind="AccountPlus"
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Center"
-                                        Margin="0 0 20 0"
-                                        Foreground="#7e5fdc" />
-        </Grid>
-
-        <StackPanel Grid.Row="1">
-            <Grid Margin="20 0"
-                  Width="300"
-                  HorizontalAlignment="Left">
-                <TextBlock Margin="20 0"
-                           VerticalAlignment="Center"
-                           Foreground="#b0b9c6"
-                           IsHitTestVisible="False"
-                           Panel.ZIndex="1"
-                           Text="Enter first name ..."
-                           Visibility="{Binding ElementName=TxtSearch1,  Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
-
-                <TextBox x:Name="TxtSearch1"
-                         Style="{StaticResource TextBoxSearch}" 
-                         Text="{Binding FirstName}"/>
-
-            </Grid>
-
-            <Grid Margin="20 0 0 15"
-                  Width="300"
-                  HorizontalAlignment="Left">
-                <TextBlock Margin="20 0"
-                           VerticalAlignment="Center"
-                           Foreground="#b0b9c6"
-                           IsHitTestVisible="False"
-                           Panel.ZIndex="1"
-                           Text="Enter last name ..."
-                           Visibility="{Binding ElementName=TxtSearch2,  Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
-
-                <TextBox x:Name="TxtSearch2"
-                         Style="{StaticResource TextBoxSearch}" 
-                         Text="{Binding LastName}"/>
-
-            </Grid>
-        </StackPanel>
-
-        <Button Grid.Row="2"
-                Style="{StaticResource AddButton}"
-                Command="{Binding AddCustomerCommand}"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Margin="20 0">
-            <StackPanel Orientation="Horizontal">
-                <iconPacks:PackIconMaterial Kind="AccountPlus"
-                                            VerticalAlignment="Center"
-                                            Margin="0 0 15 0"
-                                            Foreground="#b0b9c6" />
-                <TextBlock Text="Add customer"
-                           Foreground="White" />
-            </StackPanel>
-        </Button>
+        <ContentControl Content="{Binding SelectedViewModel}"/>
     </Grid>
 </Window>

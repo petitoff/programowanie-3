@@ -79,5 +79,24 @@ namespace CarMechanic.UI.Data
                 await ctx.SaveChangesAsync();
             }
         }
+
+        public async Task AddEmployer(Employer employer)
+        {
+            using (var ctx = _contextCreator())
+            {
+                ctx.Employers.Add(employer);
+                await ctx.SaveChangesAsync();
+            }
+        }
+
+        public async Task DeleteEmployer(Employer employer)
+        {
+            using (var ctx = _contextCreator())
+            {
+                ctx.Employers.Attach(employer);
+                ctx.Employers.Remove(employer);
+                await ctx.SaveChangesAsync();
+            }
+        }
     }
 }
