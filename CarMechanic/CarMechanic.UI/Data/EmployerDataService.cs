@@ -25,5 +25,15 @@ namespace CarMechanic.UI.Data
                 return await ctx.Employers.AsNoTracking().ToListAsync();
             }    
         }
+
+        public async Task UpdateEmployer(Employer employer)
+        {
+            using (var ctx = _contextCreator())
+            {
+                ctx.Employers.Attach(employer);
+                ctx.Entry(employer).State = EntityState.Modified;
+                await ctx.SaveChangesAsync();
+            }
+        }
     }
 }

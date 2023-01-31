@@ -1,4 +1,5 @@
-﻿using CarMechanic.Model;
+﻿using System.Collections.Generic;
+using CarMechanic.Model;
 
 namespace CarMechanic.DataAccess.Migrations
 {
@@ -14,22 +15,17 @@ namespace CarMechanic.DataAccess.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(CarMechanicDbContext context)
+        protected override void Seed(CarMechanic.DataAccess.CarMechanicDbContext context)
         {
-            context.Customers.AddOrUpdate(f => f.FirstName,
-                new Customer
-                {
-                    FirstName = "John",
-                    LastName = "Loe"
-                },
-                new Customer { FirstName = "Dock", LastName = "Werk" });
+            var employer1 = new Employer { FirstName = "John", LastName = "Doe", };
+            var employer2 = new Employer { FirstName = "John", LastName = "Doe", };
+            context.Employers.AddOrUpdate(e => e.FirstName, employer1, employer2);
 
-            context.Employers.AddOrUpdate(f => f.FirstName,
-                new Employer
-                {
-                    FirstName = "Andrzej",
-                    LastName = "Nosiwąs",
-                });
+            //var customer1 = new Customer { FirstName = "John", LastName = "Smith", EmployerId = employer1.Id };
+            //var customer2 = new Customer { FirstName = "Jane", LastName = "Doe", EmployerId = employer2.Id };
+            //context.Customers.AddOrUpdate(c => c.FirstName, customer1, customer2);
+
+            //context.SaveChanges();
         }
     }
 }

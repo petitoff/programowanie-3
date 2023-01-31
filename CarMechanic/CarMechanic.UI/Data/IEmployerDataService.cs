@@ -7,5 +7,6 @@ namespace CarMechanic.UI.Data
     public interface IEmployerDataService
     {
         Task<List<Employer>> GetAllEmployers();
+        Task UpdateEmployer(Employer employer);
     }
 }

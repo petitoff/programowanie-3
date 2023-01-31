@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CarMechanic.UI"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:viewModel="clr-namespace:CarMechanic.UI.ViewModel"
+        xmlns:view="clr-namespace:CarMechanic.UI.View"
         mc:Ignorable="d"
         Title="CarMechanic"
         Height="720"
@@ -16,6 +17,14 @@
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"></BooleanToVisibilityConverter>
+
+        <DataTemplate DataType="{x:Type viewModel:DashboardViewModel}">
+            <view:DashboardView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:CustomersViewModel}">
+            <view:CustomersView />
+        </DataTemplate>
     </Window.Resources>
 
     <Border Background="#eff2f7"
@@ -87,7 +96,8 @@
 
                         <!--Menu Buttons-->
                         <StackPanel DockPanel.Dock="Top">
-                            <Button Style="{StaticResource MenuButton}">
+                            <Button Style="{StaticResource MenuButton}"
+                                    Command="{Binding GoToDashboardCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <iconPacks:PackIconMaterial Kind="HomeVariant"
                                                                 Style="{StaticResource MenuButtonIcon}" />
@@ -96,16 +106,17 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource MenuButton}">
+                            <!--<Button Style="{StaticResource MenuButton}">
                                 <StackPanel Orientation="Horizontal">
                                     <iconPacks:PackIconMaterial Kind="Calendar"
                                                                 Style="{StaticResource MenuButtonIcon}" />
                                     <TextBlock Text="Calendar" />
 
                                 </StackPanel>
-                            </Button>
+                            </Button>-->
 
-                            <Button Style="{StaticResource MenuButton}">
+                            <Button Style="{StaticResource MenuButton}"
+                                    Command="{Binding GoToCustomersCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <iconPacks:PackIconMaterial Kind="Accountmultiple"
                                                                 Style="{StaticResource MenuButtonIcon}" />
@@ -252,8 +263,11 @@
                                 </EventTrigger>
                             </Ellipse.Triggers>
                         </Ellipse>
-
                     </StackPanel>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <ContentControl Content="{Binding SelectedViewModel}" />
                 </Grid>
             </Grid>
         </Grid>

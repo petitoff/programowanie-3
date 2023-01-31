@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Reflection.Emit;
 using CarMechanic.Model;
 
 namespace CarMechanic.DataAccess
@@ -18,6 +19,11 @@ namespace CarMechanic.DataAccess
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<Customer>()
+                .HasRequired(c => c.Employer)
+                .WithMany(e => e.Customers)
+                .HasForeignKey(c => c.EmployerId);
         }
     }
 }

@@ -57,13 +57,29 @@
       <DependentUpon>CarMechanicDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="CarMechanicDbContext.cs" />
-    <Compile Include="Migrations\202301110103229_InitialDatabase.cs" />
-    <Compile Include="Migrations\202301110103229_InitialDatabase.designer.cs">
-      <DependentUpon>202301110103229_InitialDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\202301311212122_InitialDatabase.cs" />
+    <Compile Include="Migrations\202301311212122_InitialDatabase.designer.cs">
+      <DependentUpon>202301311212122_InitialDatabase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202301151407592_AddEmployers.cs" />
-    <Compile Include="Migrations\202301151407592_AddEmployers.designer.cs">
-      <DependentUpon>202301151407592_AddEmployers.cs</DependentUpon>
+    <Compile Include="Migrations\202301311217456_InitialDatabase1.cs" />
+    <Compile Include="Migrations\202301311217456_InitialDatabase1.designer.cs">
+      <DependentUpon>202301311217456_InitialDatabase1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301311233478_InitialDatabase2.cs" />
+    <Compile Include="Migrations\202301311233478_InitialDatabase2.designer.cs">
+      <DependentUpon>202301311233478_InitialDatabase2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301311237025_InitialDatabase21.cs" />
+    <Compile Include="Migrations\202301311237025_InitialDatabase21.designer.cs">
+      <DependentUpon>202301311237025_InitialDatabase21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301311240380_InitialDatabase3.cs" />
+    <Compile Include="Migrations\202301311240380_InitialDatabase3.designer.cs">
+      <DependentUpon>202301311240380_InitialDatabase3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301311244346_InitialDatabase4.cs" />
+    <Compile Include="Migrations\202301311244346_InitialDatabase4.designer.cs">
+      <DependentUpon>202301311244346_InitialDatabase4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,11 +106,23 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202301110103229_InitialDatabase.resx">
-      <DependentUpon>202301110103229_InitialDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202301311212122_InitialDatabase.resx">
+      <DependentUpon>202301311212122_InitialDatabase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301151407592_AddEmployers.resx">
-      <DependentUpon>202301151407592_AddEmployers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202301311217456_InitialDatabase1.resx">
+      <DependentUpon>202301311217456_InitialDatabase1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301311233478_InitialDatabase2.resx">
+      <DependentUpon>202301311233478_InitialDatabase2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301311237025_InitialDatabase21.resx">
+      <DependentUpon>202301311237025_InitialDatabase21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301311240380_InitialDatabase3.resx">
+      <DependentUpon>202301311240380_InitialDatabase3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301311244346_InitialDatabase4.resx">
+      <DependentUpon>202301311244346_InitialDatabase4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

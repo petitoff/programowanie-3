@@ -1,32 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using CarMechanic.Model;
+using CarMechanic.UI.Command;
 using CarMechanic.UI.Data;
 
 namespace CarMechanic.UI.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
-        private readonly ICustomerDataService _customerDataService;
         private string _nameOfUser;
         private string _roleOfUser;
         private readonly IEmployerDataService _employerDataService;
+        private BaseViewModel _selectedViewModel;
 
-        public MainViewModel(ICustomerDataService customerDataService, IEmployerDataService employerDataService)
+        public MainViewModel(IEmployerDataService employerDataService, DashboardViewModel dashboardViewModel, CustomersViewModel customersViewModel)
         {
-            _customerDataService = customerDataService;
             _employerDataService = employerDataService;
-            Customers = new ObservableCollection<Customer>();
             Employers = new ObservableCollection<Employer>();
+
+            DashboardViewModel = dashboardViewModel;
+            SelectedViewModel = DashboardViewModel;
+            CustomersViewModel = customersViewModel;
+
+            GoToDashboardCommand = new DelegateCommand(GoToDashboard);
+            GoToCustomersCommand = new DelegateCommand(GoToCustomers);
         }
 
         public ObservableCollection<Employer> Employers { get; set; }
 
-        public ObservableCollection<Customer> Customers { get; set; }
+        public BaseViewModel SelectedViewModel
+        {
+            get => _selectedViewModel;
+            set
+            {
+                _selectedViewModel = value;
+                OnPropertyChanged();
+            }
+        }
+        
+        public DashboardViewModel DashboardViewModel { get; }
+        public CustomersViewModel CustomersViewModel { get; }
+        public DelegateCommand GoToDashboardCommand { get; set; }
+        public DelegateCommand GoToCustomersCommand { get; set; }
+
 
         public string NameOfUser
         {
@@ -50,14 +66,6 @@ namespace CarMechanic.UI.ViewModel
 
         public async Task OnLoad()
         {
-
-            var customers = await _customerDataService.GetAllCustomers();
-            Customers.Clear();
-            foreach (var customer in customers)
-            {
-                Customers.Add(customer);
-            }
-
             var employers = await _employerDataService.GetAllEmployers();
             Employers.Clear();
             foreach (var employer in employers)
@@ -69,5 +77,16 @@ namespace CarMechanic.UI.ViewModel
             RoleOfUser = $"{Employers[0].Role}";
         }
 
+        private void GoToDashboard(object obj)
+        {
+            SelectedViewModel = DashboardViewModel;
+        }
+
+
+        private void GoToCustomers(object obj)
+        {
+            CustomersViewModel.Initialize();
+            SelectedViewModel = CustomersViewModel;
+        }
     }
 }

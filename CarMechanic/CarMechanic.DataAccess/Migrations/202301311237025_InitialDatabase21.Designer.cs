@@ -7,13 +7,13 @@ namespace CarMechanic.DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddEmployers : IMigrationMetadata
+    public sealed partial class InitialDatabase21 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddEmployers));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialDatabase21));
         
         string IMigrationMetadata.Id
         {
-            get { return "202301151407592_AddEmployers"; }
+            get { return "202301311237025_InitialDatabase21"; }
         }
         
         string IMigrationMetadata.Source
