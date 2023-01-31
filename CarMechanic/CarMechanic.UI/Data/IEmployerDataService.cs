@@ -7,6 +7,7 @@ namespace CarMechanic.UI.Data
     public interface IEmployerDataService
     {
         Task<List<Employer>> GetAllEmployers();
+        Task<Employer> GetEmployerById(int id);
         Task<List<Employer>> GetAllEmployersWithRelatedCustomers();
         Task<Employer> GetEmployerWithCustomersByEmployerId(int employerId);
         Task<List<Customer>> GetCustomersByEmployerId(int employerId);

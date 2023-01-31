@@ -26,6 +26,14 @@ namespace CarMechanic.UI.Data
             }    
         }
 
+        public async Task<Employer> GetEmployerById(int id)
+        {
+            using (var ctx = _contextCreator())
+            {
+                return await ctx.Employers.AsNoTracking().SingleOrDefaultAsync(e => e.Id == id);
+            }
+        }
+
         public async Task<List<Employer>> GetAllEmployersWithRelatedCustomers()
         {
             using (var context = _contextCreator())
