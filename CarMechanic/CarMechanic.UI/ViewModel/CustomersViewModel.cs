@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CarMechanic.Model;
 using CarMechanic.UI.Command;
 using CarMechanic.UI.Data;
 using CarMechanic.UI.Window;
+using Prism.Events;
 
 namespace CarMechanic.UI.ViewModel
 {
@@ -16,18 +13,21 @@ namespace CarMechanic.UI.ViewModel
         private readonly IEmployerDataService _employerDataService;
         private string _firstName;
         private string _lastName;
+        private readonly IEventAggregator _eventAggregator;
+        private readonly IUserDataStore _userDataStore;
 
-        public CustomersViewModel(IEmployerDataService employerDataService)
+        public CustomersViewModel(IEmployerDataService employerDataService, IEventAggregator eventAggregator,
+            IUserDataStore userDataStore)
         {
             _employerDataService = employerDataService;
+            _eventAggregator = eventAggregator;
+            _userDataStore = userDataStore;
 
-            Employers = new ObservableCollection<Employer>();
             Customers = new ObservableCollection<Customer>();
             OpenSecondWindowCommand = new DelegateCommand(OpenSecondWindow);
             AddCustomerCommand = new DelegateCommand(AddCustomer);
         }
 
-        public ObservableCollection<Employer> Employers { get; set; }
         public ObservableCollection<Customer> Customers { get; set; }
         public DelegateCommand OpenSecondWindowCommand { get; set; }
         public DelegateCommand AddCustomerCommand { get; set; }
@@ -67,17 +67,9 @@ namespace CarMechanic.UI.ViewModel
         }
 
         #region Data services
-        private async void LoadEmployers()
-        {
-            var employers = await _employerDataService.GetAllEmployers();
-            Employers.Clear();
-            // add all employers to the collection with linq
-            employers.ToList().ForEach(Employers.Add);
-        }
-
         private async void LoadCustomers()
         {
-            var customers = await _employerDataService.GetCustomersByEmployerId(1);
+            var customers = await _employerDataService.GetCustomersByEmployerId(_userDataStore.CurrentUserId);
             Customers.Clear();
             customers.ToList().ForEach(Customers.Add);
         }

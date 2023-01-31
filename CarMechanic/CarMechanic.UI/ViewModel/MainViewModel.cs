@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using CarMechanic.Model;
 using CarMechanic.UI.Command;
 using CarMechanic.UI.Data;
+using Prism.Events;
 
 namespace CarMechanic.UI.ViewModel
 {
@@ -12,10 +13,16 @@ namespace CarMechanic.UI.ViewModel
         private string _roleOfUser;
         private readonly IEmployerDataService _employerDataService;
         private BaseViewModel _selectedViewModel;
+        private readonly IEventAggregator _eventAggregator;
+        private readonly IUserDataStore _userDataStore;
 
-        public MainViewModel(IEmployerDataService employerDataService, DashboardViewModel dashboardViewModel, CustomersViewModel customersViewModel)
+        public MainViewModel(IEmployerDataService employerDataService, DashboardViewModel dashboardViewModel,
+            CustomersViewModel customersViewModel, IEventAggregator eventAggregator, IUserDataStore userDataStore)
         {
             _employerDataService = employerDataService;
+            _eventAggregator = eventAggregator;
+            _userDataStore = userDataStore;
+
             Employers = new ObservableCollection<Employer>();
 
             DashboardViewModel = dashboardViewModel;
@@ -37,7 +44,7 @@ namespace CarMechanic.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-        
+
         public DashboardViewModel DashboardViewModel { get; }
         public CustomersViewModel CustomersViewModel { get; }
         // ReSharper disable once UnusedAutoPropertyAccessor.Global
@@ -68,17 +75,10 @@ namespace CarMechanic.UI.ViewModel
 
         public async Task OnLoad()
         {
-            //var temp = await _employerDataService.GetAllEmployersWithRelatedCustomers();
+            var employer = await _employerDataService.GetEmployerById(_userDataStore.CurrentUserId);
 
-            var employers = await _employerDataService.GetAllEmployers();
-            Employers.Clear();
-            foreach (var employer in employers)
-            {
-                Employers.Add(employer);
-            }
-
-            NameOfUser = $"{Employers[0].FirstName} {Employers[0].LastName}";
-            RoleOfUser = $"{Employers[0].Role}";
+            NameOfUser = $"{employer.FirstName} {employer.LastName}";
+            RoleOfUser = $"{employer.Role}";
         }
 
         private void GoToDashboard(object obj)

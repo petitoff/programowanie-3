@@ -2,6 +2,7 @@
 using CarMechanic.DataAccess;
 using CarMechanic.UI.Data;
 using CarMechanic.UI.ViewModel;
+using Prism.Events;
 
 namespace CarMechanic.UI.Startup
 {
@@ -11,10 +12,13 @@ namespace CarMechanic.UI.Startup
         {
             var builder = new ContainerBuilder();
 
+            builder.RegisterType<EventAggregator>().As<IEventAggregator>().SingleInstance();
+            builder.RegisterType<UserDataStore>().As<IUserDataStore>().SingleInstance();
+
             builder.RegisterType<CarMechanicDbContext>().AsSelf();
 
             builder.RegisterType<MainWindow>().AsSelf();
-            
+
             builder.RegisterType<MainViewModel>().AsSelf();
             builder.RegisterType<DashboardViewModel>().AsSelf();
             builder.RegisterType<CustomersViewModel>().AsSelf();
