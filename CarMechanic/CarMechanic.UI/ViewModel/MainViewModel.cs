@@ -40,8 +40,10 @@ namespace CarMechanic.UI.ViewModel
         
         public DashboardViewModel DashboardViewModel { get; }
         public CustomersViewModel CustomersViewModel { get; }
-        public DelegateCommand GoToDashboardCommand { get; set; }
-        public DelegateCommand GoToCustomersCommand { get; set; }
+        // ReSharper disable once UnusedAutoPropertyAccessor.Global
+        public DelegateCommand GoToDashboardCommand { get; }
+        // ReSharper disable once UnusedAutoPropertyAccessor.Global
+        public DelegateCommand GoToCustomersCommand { get; }
 
 
         public string NameOfUser
