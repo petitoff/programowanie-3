@@ -113,7 +113,16 @@ namespace CarMechanic.UI.ViewModel
 
         private void UpdateCustomerList(Customer obj)
         {
-            Customers.Add(obj);
+            // if obj is in Customers update if not add
+            if (Customers.Contains(obj))
+            {
+                var index = Customers.IndexOf(obj);
+                Customers[index] = obj;
+            }
+            else
+            {
+                Customers.Add(obj);
+            }
         }
 
         private void DeleteCustomerFromList(Customer obj)
