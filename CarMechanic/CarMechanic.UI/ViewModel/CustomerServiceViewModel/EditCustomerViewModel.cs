@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CarMechanic.Model;
+﻿using CarMechanic.Model;
 using CarMechanic.UI.Command;
 using CarMechanic.UI.Data;
 
-namespace CarMechanic.UI.ViewModel.CustomerItemViewModel
+namespace CarMechanic.UI.ViewModel.CustomerServiceViewModel
 {
     public class EditCustomerViewModel : BaseViewModel
     {

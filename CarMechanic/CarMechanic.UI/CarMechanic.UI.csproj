@@ -113,8 +113,8 @@
     <Compile Include="Data\UserDataStore.cs" />
     <Compile Include="Startup\Bootstrapper.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
-    <Compile Include="ViewModel\CustomerItemViewModel\AddCustomerViewModel.cs" />
-    <Compile Include="ViewModel\CustomerItemViewModel\EditCustomerViewModel.cs" />
+    <Compile Include="ViewModel\CustomerServiceViewModel\AddCustomerViewModel.cs" />
+    <Compile Include="ViewModel\CustomerServiceViewModel\EditCustomerViewModel.cs" />
     <Compile Include="ViewModel\CustomersViewModel.cs" />
     <Compile Include="ViewModel\DashboardViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

@@ -4,6 +4,7 @@ using CarMechanic.Model;
 using CarMechanic.UI.Command;
 using CarMechanic.UI.Data;
 using CarMechanic.UI.ViewModel.CustomerItemViewModel;
+using CarMechanic.UI.ViewModel.CustomerServiceViewModel;
 using CarMechanic.UI.Window;
 using Prism.Events;
 

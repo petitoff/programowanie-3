@@ -7,6 +7,7 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:view="clr-namespace:CarMechanic.UI.View"
         xmlns:viewModel="clr-namespace:CarMechanic.UI.ViewModel.CustomerItemViewModel"
+        xmlns:customerServiceViewModel="clr-namespace:CarMechanic.UI.ViewModel.CustomerServiceViewModel"
         mc:Ignorable="d"
         Title="SecondWindow"
         Height="450"
@@ -16,7 +17,7 @@
         <DataTemplate DataType="{x:Type viewModel:AddCustomerViewModel}">
             <view:AddCustomerView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModel:EditCustomerViewModel}">
+        <DataTemplate DataType="{x:Type customerServiceViewModel:EditCustomerViewModel}">
             <view:EditCustomerView />
         </DataTemplate>
     </Window.Resources>
