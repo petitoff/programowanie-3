@@ -1,6 +1,8 @@
 ﻿using CarMechanic.Model;
 using CarMechanic.UI.Command;
 using CarMechanic.UI.Data;
+using CarMechanic.UI.Event;
+using Prism.Events;
 
 namespace CarMechanic.UI.ViewModel.CustomerServiceViewModel
 {
@@ -8,14 +10,19 @@ namespace CarMechanic.UI.ViewModel.CustomerServiceViewModel
     {
         private Customer _customer;
         private readonly ICustomerDataService _customerDataService;
+        private readonly IEventAggregator _eventAggregator;
 
-        public EditCustomerViewModel(ICustomerDataService customerDataService)
+        public EditCustomerViewModel(IEventAggregator eventAggregator, ICustomerDataService customerDataService)
         {
+            _eventAggregator = eventAggregator;
             _customerDataService = customerDataService;
 
             EditCustomerCommand = new DelegateCommand(EditCustomer);
+            DeleteCustomerCommand = new DelegateCommand(DeleteCustomer);
         }
+
         public DelegateCommand EditCustomerCommand { get; }
+        public DelegateCommand DeleteCustomerCommand { get; }
 
         public string FirstName
         {
@@ -45,6 +52,13 @@ namespace CarMechanic.UI.ViewModel.CustomerServiceViewModel
         private void EditCustomer(object obj)
         {
             _customerDataService.UpdateCustomer(_customer);
+            _eventAggregator.GetEvent<UpdateCustomerListEvent>().Publish(_customer);
+        }
+
+        private void DeleteCustomer(object obj)
+        {
+            _customerDataService.DeleteCustomer(_customer);
+            _eventAggregator.GetEvent<DeleteCustomerFromListEvent>().Publish(_customer);
         }
     }
 }

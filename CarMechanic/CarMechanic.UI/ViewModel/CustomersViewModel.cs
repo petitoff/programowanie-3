@@ -3,6 +3,7 @@ using System.Linq;
 using CarMechanic.Model;
 using CarMechanic.UI.Command;
 using CarMechanic.UI.Data;
+using CarMechanic.UI.Event;
 using CarMechanic.UI.ViewModel.CustomerItemViewModel;
 using CarMechanic.UI.ViewModel.CustomerServiceViewModel;
 using CarMechanic.UI.Window;
@@ -24,6 +25,8 @@ namespace CarMechanic.UI.ViewModel
         {
             _employerDataService = employerDataService;
             _eventAggregator = eventAggregator;
+            _eventAggregator.GetEvent<UpdateCustomerListEvent>().Subscribe(UpdateCustomerList);
+            _eventAggregator.GetEvent<DeleteCustomerFromListEvent>().Subscribe(DeleteCustomerFromList); 
             _userDataStore = userDataStore;
 
             AddCustomerViewModel = addCustomerViewModel;
@@ -34,8 +37,6 @@ namespace CarMechanic.UI.ViewModel
 
             OpenSecondWindowAddCustomerCommand = new DelegateCommand(OpenSecondWindowAddCustomer);
             OpenSecondWindowEditCustomerCommand = new DelegateCommand(OpenSecondWindowEditCustomer);
-            
-            
         }
 
         public BaseViewModel SelectedViewModel
@@ -103,13 +104,21 @@ namespace CarMechanic.UI.ViewModel
             secondWindow.Show();
         }
 
-        #region Data services
         private async void LoadCustomers()
         {
             var customers = await _employerDataService.GetCustomersByEmployerId(_userDataStore.CurrentUserId);
             Customers.Clear();
             customers.ToList().ForEach(Customers.Add);
         }
-        #endregion
+
+        private void UpdateCustomerList(Customer obj)
+        {
+            Customers.Add(obj);
+        }
+
+        private void DeleteCustomerFromList(Customer obj)
+        {
+            Customers.Remove(obj);
+        }
     }
 }

@@ -111,7 +111,9 @@
     <Compile Include="Data\IEmployerDataService.cs" />
     <Compile Include="Data\IUserDataStore.cs" />
     <Compile Include="Data\UserDataStore.cs" />
+    <Compile Include="Event\DeleteCustomerFromListEvent.cs" />
     <Compile Include="Startup\Bootstrapper.cs" />
+    <Compile Include="Event\UpdateCustomerListEvent.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CustomerServiceViewModel\AddCustomerViewModel.cs" />
     <Compile Include="ViewModel\CustomerServiceViewModel\EditCustomerViewModel.cs" />
@@ -211,9 +213,7 @@
   <ItemGroup>
     <Resource Include="Assets\Images\Logo.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Event\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

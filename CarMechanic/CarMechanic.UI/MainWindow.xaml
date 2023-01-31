@@ -48,9 +48,9 @@
                 <!--Menu Icon-->
                 <Button Margin="20 28 0 35"
                         Style="{StaticResource TopButton}">
-                    <iconPacks:PackIconMaterial Kind="Menu"
+                    <!--<iconPacks:PackIconMaterial Kind="Menu"
                                                 Width="15"
-                                                Height="15" />
+                                                Height="15" />-->
                 </Button>
 
                 <Border Grid.Row="1"
@@ -166,7 +166,7 @@
 
                 <!--Search Textbox-->
                 <Grid>
-                    <Grid Width="300"
+                    <!--<Grid Width="300"
                           HorizontalAlignment="Left">
                         <TextBlock Margin="20 0"
                                    VerticalAlignment="Center"
@@ -185,7 +185,7 @@
                                                     Foreground="#b0b9c6"
                                                     HorizontalAlignment="Right" />
 
-                    </Grid>
+                    </Grid>-->
                     <StackPanel VerticalAlignment="Center"
                                 HorizontalAlignment="Right"
                                 Orientation="Horizontal">
@@ -204,13 +204,13 @@
                             </Style>
                         </StackPanel.Resources>
 
-                        <Button Style="{StaticResource TopButton}">
+                        <!--<Button Style="{StaticResource TopButton}">
                             <iconPacks:PackIconMaterial Kind="Bell" />
                         </Button>
 
                         <Button Style="{StaticResource TopButton}">
                             <iconPacks:PackIconMaterial Kind="Cog" />
-                        </Button>
+                        </Button>-->
 
                         <Separator Margin="0 0 20 0"
                                    VerticalAlignment="Center"
