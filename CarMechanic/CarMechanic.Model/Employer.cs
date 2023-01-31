@@ -10,7 +10,6 @@ namespace CarMechanic.Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Role { get; set; }
-        [ForeignKey("EmployerId")]
         public IList<Customer> Customers { get; set; }
     }
 }

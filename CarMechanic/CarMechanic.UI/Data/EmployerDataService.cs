@@ -26,6 +26,42 @@ namespace CarMechanic.UI.Data
             }    
         }
 
+        public async Task<List<Employer>> GetAllEmployersWithRelatedCustomers()
+        {
+            using (var context = _contextCreator())
+            {
+                var employersWithCustomers = await context.Employers
+                    .Include(e => e.Customers)
+                    .ToListAsync();
+
+                return employersWithCustomers;
+            }
+        }
+
+        public async Task<Employer> GetEmployerWithCustomersByEmployerId(int employerId)
+        {
+            using (var context = _contextCreator())
+            {
+                var employerWithCustomers = await context.Employers
+                    .Include(e => e.Customers)
+                    .SingleOrDefaultAsync(e => e.Id == employerId);
+
+                return employerWithCustomers;
+            }
+        }
+
+        public async Task<List<Customer>> GetCustomersByEmployerId(int employerId)
+        {
+            using (var context = _contextCreator())
+            {
+                var customers = await context.Customers
+                    .Where(c => c.EmployerId == employerId)
+                    .ToListAsync();
+
+                return customers;
+            }
+        }
+
         public async Task UpdateEmployer(Employer employer)
         {
             using (var ctx = _contextCreator())

@@ -66,6 +66,8 @@ namespace CarMechanic.UI.ViewModel
 
         public async Task OnLoad()
         {
+            //var temp = await _employerDataService.GetAllEmployersWithRelatedCustomers();
+
             var employers = await _employerDataService.GetAllEmployers();
             Employers.Clear();
             foreach (var employer in employers)

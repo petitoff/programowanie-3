@@ -22,12 +22,13 @@ namespace CarMechanic.UI.ViewModel
             _employerDataService = employerDataService;
 
             Employers = new ObservableCollection<Employer>();
+            Customers = new ObservableCollection<Customer>();
             OpenSecondWindowCommand = new DelegateCommand(OpenSecondWindow);
             AddCustomerCommand = new DelegateCommand(AddCustomer);
         }
 
-
         public ObservableCollection<Employer> Employers { get; set; }
+        public ObservableCollection<Customer> Customers { get; set; }
         public DelegateCommand OpenSecondWindowCommand { get; set; }
         public DelegateCommand AddCustomerCommand { get; set; }
         public string FirstName
@@ -35,7 +36,7 @@ namespace CarMechanic.UI.ViewModel
             get => _firstName;
             set
             {
-                _firstName = value; 
+                _firstName = value;
                 OnPropertyChanged();
 
             }
@@ -43,27 +44,19 @@ namespace CarMechanic.UI.ViewModel
         public string LastName
         {
             get => _lastName;
-            set { _lastName = value; 
-                OnPropertyChanged(); }
+            set
+            {
+                _lastName = value;
+                OnPropertyChanged();
+            }
         }
-
 
         /// <summary>
         /// Execute methods when the ViewModel is loaded
         /// </summary>
         public void Initialize()
         {
-            LoadEmployers();
-        }
-
-        private async void LoadEmployers()
-        {
-            var employers = await _employerDataService.GetAllEmployers();
-
-            Employers.Clear();
-
-            // add all employers to the collection with linq
-            employers.ToList().ForEach(Employers.Add);
+            LoadCustomers();
         }
 
         private void OpenSecondWindow(object obj)
@@ -71,21 +64,30 @@ namespace CarMechanic.UI.ViewModel
             var secondWindow = new SecondWindow();
             secondWindow.DataContext = this;
             secondWindow.Show();
-
-
-
         }
 
+        #region Data services
+        private async void LoadEmployers()
+        {
+            var employers = await _employerDataService.GetAllEmployers();
+            Employers.Clear();
+            // add all employers to the collection with linq
+            employers.ToList().ForEach(Employers.Add);
+        }
+
+        private async void LoadCustomers()
+        {
+            var customers = await _employerDataService.GetCustomersByEmployerId(1);
+            Customers.Clear();
+            customers.ToList().ForEach(Customers.Add);
+        }
+        #endregion
+
+        #region Button Method
         private void AddCustomer(object obj)
         {
-            var customer = new Customer
-            {
-                FirstName = FirstName,
-                LastName = LastName
-            };
 
-
-            //_employerDataService.AddCustomer(customer);
         }
+        #endregion
     }
 }

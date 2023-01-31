@@ -52,6 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarMechanicDbContext.cs" />
+    <Compile Include="CarMechanicNewDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CarMechanicNewDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202301311304092_InitialMigration1.cs" />
     <Compile Include="Migrations\202301311304092_InitialMigration1.designer.cs">
       <DependentUpon>202301311304092_InitialMigration1.cs</DependentUpon>
@@ -69,6 +74,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="CarMechanicNewDataSet.xsc">
+      <DependentUpon>CarMechanicNewDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CarMechanicNewDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CarMechanicNewDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CarMechanicNewDataSet.xss">
+      <DependentUpon>CarMechanicNewDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
