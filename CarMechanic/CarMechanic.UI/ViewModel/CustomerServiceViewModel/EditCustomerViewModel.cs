@@ -1,22 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CarMechanic.Model;
+﻿using CarMechanic.Model;
 using CarMechanic.UI.Command;
 using CarMechanic.UI.Data;
+using CarMechanic.UI.Event;
+using Prism.Events;
 
-namespace CarMechanic.UI.ViewModel.CustomerItemViewModel
+namespace CarMechanic.UI.ViewModel.CustomerServiceViewModel
 {
     public class EditCustomerViewModel : BaseViewModel
     {
         private Customer _customer;
         private readonly ICustomerDataService _customerDataService;
+        private readonly IEventAggregator _eventAggregator;
 
-        public EditCustomerViewModel(ICustomerDataService customerDataService)
+        public EditCustomerViewModel(IEventAggregator eventAggregator,ICustomerDataService customerDataService)
         {
             _customerDataService = customerDataService;
+            _eventAggregator = eventAggregator;
+            _customer = new Customer();
 
             EditCustomerCommand = new DelegateCommand(EditCustomer);
         }
@@ -50,6 +50,8 @@ namespace CarMechanic.UI.ViewModel.CustomerItemViewModel
         private void EditCustomer(object obj)
         {
             _customerDataService.UpdateCustomer(_customer);
+            _eventAggregator.GetEvent<UpdateCustomerListEvent>()
+                .Publish(_customer);
         }
     }
 }

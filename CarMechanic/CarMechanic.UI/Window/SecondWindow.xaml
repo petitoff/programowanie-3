@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CarMechanic.UI.Window"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:view="clr-namespace:CarMechanic.UI.View"
-        xmlns:viewModel="clr-namespace:CarMechanic.UI.ViewModel.CustomerItemViewModel"
+        xmlns:viewModel="clr-namespace:CarMechanic.UI.ViewModel.CustomerServiceViewModel"
         mc:Ignorable="d"
         Title="SecondWindow"
         Height="450"

@@ -1,23 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CarMechanic.Model;
+﻿using CarMechanic.Model;
 using CarMechanic.UI.Command;
 using CarMechanic.UI.Data;
+using CarMechanic.UI.Event;
+using Prism.Events;
 
-namespace CarMechanic.UI.ViewModel.CustomerItemViewModel
+namespace CarMechanic.UI.ViewModel.CustomerServiceViewModel
 {
     public class AddCustomerViewModel : BaseViewModel
     {
         private readonly Customer _customer;
         private readonly ICustomerDataService _customerDataService;
         private readonly IUserDataStore _userDataStore;
+        private readonly IEventAggregator _eventAggregator;
 
-        public AddCustomerViewModel(ICustomerDataService customerDataService, IUserDataStore userDataStore)
+        public AddCustomerViewModel(IEventAggregator eventAggregator, ICustomerDataService customerDataService, IUserDataStore userDataStore)
         {
             _customerDataService = customerDataService;
+            _eventAggregator = eventAggregator;
             _userDataStore = userDataStore;
             _customer = new Customer();
 
@@ -49,6 +48,9 @@ namespace CarMechanic.UI.ViewModel.CustomerItemViewModel
         private void AddCustomer(object obj)
         {
             _customerDataService.AddCustomerToEmployerById(_userDataStore.CurrentUserId, _customer);
+
+            _eventAggregator.GetEvent<UpdateCustomerListEvent>()
+                .Publish(_customer);
         }
     }
 }

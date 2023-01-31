@@ -2,7 +2,7 @@
 using CarMechanic.DataAccess;
 using CarMechanic.UI.Data;
 using CarMechanic.UI.ViewModel;
-using CarMechanic.UI.ViewModel.CustomerItemViewModel;
+using CarMechanic.UI.ViewModel.CustomerServiceViewModel;
 using Prism.Events;
 
 namespace CarMechanic.UI.Startup
