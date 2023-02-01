@@ -32,7 +32,7 @@ namespace CarMechanic.UI.ViewModel
             EditCustomerViewModel = editCustomerViewModel;
             SelectedViewModel = AddCustomerViewModel;
 
-            Customers = new ObservableCollection<Customer>();
+            Customers = new ObservableCollection<CustomerItemViewModel>();
 
             OpenSecondWindowAddCustomerCommand = new DelegateCommand(OpenSecondWindowAddCustomer);
             OpenSecondWindowEditCustomerCommand = new DelegateCommand(OpenSecondWindowEditCustomer);
@@ -49,7 +49,7 @@ namespace CarMechanic.UI.ViewModel
         }
         public AddCustomerViewModel AddCustomerViewModel { get; }
         public EditCustomerViewModel EditCustomerViewModel { get; }
-        public ObservableCollection<Customer> Customers { get; }
+        public ObservableCollection<CustomerItemViewModel> Customers { get; }
         public DelegateCommand OpenSecondWindowAddCustomerCommand { get; }
         public DelegateCommand OpenSecondWindowEditCustomerCommand { get; }
 
@@ -90,7 +90,19 @@ namespace CarMechanic.UI.ViewModel
         private void OpenSecondWindowEditCustomer(object obj)
         {
             SelectedViewModel = EditCustomerViewModel;
-            EditCustomerViewModel.InsertData(obj as Customer);
+
+            if (obj is CustomerItemViewModel customerItemViewModel)
+            {
+                var customer = new Customer
+                {
+                    Id = customerItemViewModel.Id,
+                    FirstName = customerItemViewModel.FirstName,
+                    LastName = customerItemViewModel.LastName
+                };
+
+                EditCustomerViewModel.InsertData(customer);
+            }
+
             OpenSecondWindow();
         }
 
@@ -107,7 +119,13 @@ namespace CarMechanic.UI.ViewModel
         {
             var customers = await _employerDataService.GetCustomersByEmployerId(_userDataStore.CurrentUserId);
             Customers.Clear();
-            customers.ToList().ForEach(Customers.Add);
+
+            //customers.ToList().ForEach(Customers.Add);
+
+            foreach (var customer in customers)
+            {
+                Customers.Add(new CustomerItemViewModel(customer));
+            }
         }
 
         private void UpdateCustomerList(Customer obj)

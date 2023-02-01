@@ -9,6 +9,7 @@
         xmlns:customerServiceViewModel="clr-namespace:CarMechanic.UI.ViewModel.CustomerService"
         xmlns:customerService="clr-namespace:CarMechanic.UI.ViewModel.CustomerService"
         xmlns:workService="clr-namespace:CarMechanic.UI.ViewModel.WorkService"
+        
         mc:Ignorable="d"
         Title="SecondWindow"
         Height="450"

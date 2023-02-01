@@ -21,7 +21,7 @@
                 CornerRadius="20 0 20 0">
             <StackPanel>
                 <TextBlock Margin="20 10 0 0 "
-                           Text="Twoje zadania"
+                           Text="Your tasks"
                            Foreground="White"
                            FontSize="15" />
                 <TextBlock Text="4 / 5"
