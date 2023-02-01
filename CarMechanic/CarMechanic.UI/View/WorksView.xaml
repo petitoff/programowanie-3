@@ -1,13 +1,12 @@
-﻿<UserControl x:Class="CarMechanic.UI.View.CustomersView"
+﻿<UserControl x:Class="CarMechanic.UI.View.WorksView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CarMechanic.UI.View"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             mc:Ignorable="d"
-             d:DesignHeight="450"
-             d:DesignWidth="800">
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80" />
@@ -15,40 +14,41 @@
         </Grid.RowDefinitions>
 
         <Button Style="{StaticResource AddButton}"
-                Command="{Binding OpenSecondWindowAddCustomerCommand}">
+                Command="{Binding OpenSecondWindowAddWorkCommand}">
             <StackPanel Orientation="Horizontal">
                 <iconPacks:PackIconMaterial Kind="Plus"
                                             VerticalAlignment="Center"
                                             Width="11"
                                             Height="11"
-                                            Margin="0 1 8 0" 
-                                            Foreground="White"/>
-                <TextBlock Text="Add Customer" Foreground="White"/>
+                                            Margin="0 1 8 0"
+                                            Foreground="White" />
+                <TextBlock Text="Add Work"
+                           Foreground="White" />
             </StackPanel>
         </Button>
-
-        <!--create data grid and display Employers-->
+        
         <DataGrid Grid.Row="1"
                   AutoGenerateColumns="False"
-                  
-                  ItemsSource="{Binding Customers}"
+                  ItemsSource="{Binding Works}"
                   CanUserAddRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="First Name"
-                                    Binding="{Binding FirstName}" />
-                <DataGridTextColumn Header="Last Name"
-                                    Binding="{Binding LastName}" />
-                <DataGridTextColumn Header="Address"
-                                    Binding="{Binding Address}" />
-                <DataGridTextColumn Header="Phone"
-                                    Binding="{Binding Phone}" />
-                
+                <DataGridTextColumn Header="Name"
+                                    Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Description"
+                                    Binding="{Binding Description}" />
+                <DataGridTextColumn Header="Price"
+                                    Binding="{Binding Price}" />
+                <DataGridTextColumn Header="Time"
+                                    Binding="{Binding Time}" />
+                <DataGridTextColumn Header="Customer"
+                                    Binding="{Binding DisplayMember}" />
+
                 <!--// add button-->
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="Edit"
-                                    Command="{Binding DataContext.OpenSecondWindowEditCustomerCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                    Command="{Binding DataContext.OpenSecondWindowEditWorkCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                     CommandParameter="{Binding}">
                             </Button>
                         </DataTemplate>

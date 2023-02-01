@@ -8,7 +8,7 @@ namespace CarMechanic.UI.Data
     {
         Task<List<Customer>> GetAllCustomers();
         Task UpdateCustomer(Customer customer);
-        Task AddCustomer(Customer customer);
+        Task DeleteCustomer(Customer customer);
         Task AddCustomerToEmployerById(int employerId, Customer customer);
     }
 }

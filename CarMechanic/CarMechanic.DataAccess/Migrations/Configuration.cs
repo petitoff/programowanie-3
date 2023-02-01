@@ -21,6 +21,18 @@
             var customer1 = new Customer { FirstName = "John", LastName = "Smith", EmployerId = employer1.Id };
             context.Customers.AddOrUpdate(c => c.FirstName, customer1);
 
+            var work1 = new Work
+            {
+                Name = "Oil change",
+                Description = "Change oil",
+                Price = 100,
+                Time = 30,
+                EmployerId = employer1.Id,
+                CustomerId = customer1.Id
+            };
+
+            context.Works.AddOrUpdate(w => w.Name, work1);
+
             context.SaveChanges();
         }
     }

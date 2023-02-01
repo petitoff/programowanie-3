@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 using CarMechanic.Model;
 using Prism.Events;
 
-namespace CarMechanic.UI
+namespace CarMechanic.UI.Event
 {
-    public class UpdateCustomerListEvent : PubSubEvent<Customer>
+    public class DeleteCustomerFromListEvent : PubSubEvent<Customer>
     {
-        
     }
 }

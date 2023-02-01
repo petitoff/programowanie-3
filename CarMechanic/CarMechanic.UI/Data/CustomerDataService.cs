@@ -25,14 +25,6 @@ namespace CarMechanic.UI.Data
             }
         }
 
-        public async Task<Customer> GetCustomerById(int id)
-        {
-            using (var ctx = _contextCreator())
-            {
-                return await ctx.Customers.AsNoTracking().SingleAsync(c => c.Id == id);
-            }
-        }
-
         public async Task UpdateCustomer(Customer customer)
         {
             using (var ctx = _contextCreator())
@@ -43,21 +35,12 @@ namespace CarMechanic.UI.Data
             }
         }
 
-        public async Task AddCustomer(Customer customer)
-        {
-            using (var ctx = _contextCreator())
-            {
-                ctx.Customers.Add(customer);
-                await ctx.SaveChangesAsync();
-            }
-        }
-
         public async Task DeleteCustomer(Customer customer)
         {
             using (var ctx = _contextCreator())
             {
                 ctx.Customers.Attach(customer);
-                ctx.Customers.Remove(customer);
+                ctx.Entry(customer).State = EntityState.Deleted;
                 await ctx.SaveChangesAsync();
             }
         }

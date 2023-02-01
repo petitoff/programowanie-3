@@ -6,22 +6,32 @@
         xmlns:local="clr-namespace:CarMechanic.UI.Window"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:view="clr-namespace:CarMechanic.UI.View"
-        xmlns:viewModel="clr-namespace:CarMechanic.UI.ViewModel.CustomerServiceViewModel"
+        xmlns:customerServiceViewModel="clr-namespace:CarMechanic.UI.ViewModel.CustomerService"
+        xmlns:customerService="clr-namespace:CarMechanic.UI.ViewModel.CustomerService"
+        xmlns:workService="clr-namespace:CarMechanic.UI.ViewModel.WorkService"
+        
         mc:Ignorable="d"
         Title="SecondWindow"
         Height="450"
         Width="700">
 
     <Window.Resources>
-        <DataTemplate DataType="{x:Type viewModel:AddCustomerViewModel}">
+        <DataTemplate DataType="{x:Type customerService:AddCustomerViewModel}">
             <view:AddCustomerView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModel:EditCustomerViewModel}">
+        <DataTemplate DataType="{x:Type customerService:EditCustomerViewModel}">
             <view:EditCustomerView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type workService:AddWorkViewModel}">
+            <view:AddWorkView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type workService:EditWorkViewModel}">
+            <view:EditWorkView />
         </DataTemplate>
     </Window.Resources>
 
     <Grid>
-        <ContentControl Content="{Binding SelectedViewModel}"/>
+        <ContentControl Content="{Binding SelectedViewModel}" />
     </Grid>
 </Window>

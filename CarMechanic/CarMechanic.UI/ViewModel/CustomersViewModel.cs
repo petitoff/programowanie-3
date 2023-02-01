@@ -4,7 +4,7 @@ using CarMechanic.Model;
 using CarMechanic.UI.Command;
 using CarMechanic.UI.Data;
 using CarMechanic.UI.Event;
-using CarMechanic.UI.ViewModel.CustomerServiceViewModel;
+using CarMechanic.UI.ViewModel.CustomerService;
 using CarMechanic.UI.Window;
 using Prism.Events;
 
@@ -25,6 +25,7 @@ namespace CarMechanic.UI.ViewModel
             _employerDataService = employerDataService;
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<UpdateCustomerListEvent>().Subscribe(UpdateCustomerList);
+            _eventAggregator.GetEvent<DeleteCustomerFromListEvent>().Subscribe(DeleteCustomerFromList); 
             _userDataStore = userDataStore;
 
             AddCustomerViewModel = addCustomerViewModel;
@@ -35,24 +36,6 @@ namespace CarMechanic.UI.ViewModel
 
             OpenSecondWindowAddCustomerCommand = new DelegateCommand(OpenSecondWindowAddCustomer);
             OpenSecondWindowEditCustomerCommand = new DelegateCommand(OpenSecondWindowEditCustomer);
-        }
-
-        private void UpdateCustomerList(Customer obj)
-        {
-            // create CustomerItemViewModel from Customer
-            var customerItemViewModel = new CustomerItemViewModel(obj);
-
-            // add or update customer
-            var customer = Customers.SingleOrDefault(c => c.Id == obj.Id);
-            if (customer == null)
-            {
-                Customers.Add(customerItemViewModel);
-            }
-            else
-            {
-                customer.FirstName = obj.FirstName;
-                customer.LastName = obj.LastName;
-            }
         }
 
         public BaseViewModel SelectedViewModel
@@ -132,7 +115,6 @@ namespace CarMechanic.UI.ViewModel
             secondWindow.Show();
         }
 
-        #region Data services
         private async void LoadCustomers()
         {
             var customers = await _employerDataService.GetCustomersByEmployerId(_userDataStore.CurrentUserId);
@@ -145,6 +127,24 @@ namespace CarMechanic.UI.ViewModel
                 Customers.Add(new CustomerItemViewModel(customer));
             }
         }
-        #endregion
+
+        private void UpdateCustomerList(Customer obj)
+        {
+            // if obj is in Customers update if not add
+            if (Customers.Contains(obj))
+            {
+                var index = Customers.IndexOf(obj);
+                Customers[index] = obj;
+            }
+            else
+            {
+                Customers.Add(obj);
+            }
+        }
+
+        private void DeleteCustomerFromList(Customer obj)
+        {
+            Customers.Remove(obj);
+        }
     }
 }
