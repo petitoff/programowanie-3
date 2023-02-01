@@ -12,6 +12,6 @@ namespace CarMechanic.Model
         public int EmployerId { get; set; }
         public Employer Employer { get; set; }
 
-        //public IList<Work> Works { get; set; }
+        public virtual ICollection<Work> Works { get; set; }
     }
 }

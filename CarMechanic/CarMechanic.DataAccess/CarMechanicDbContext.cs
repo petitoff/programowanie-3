@@ -21,28 +21,22 @@ namespace CarMechanic.DataAccess
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            modelBuilder.Entity<Employer>()
-                .HasMany(e => e.Customers)
-                .WithRequired(c => c.Employer)
+            modelBuilder.Entity<Customer>()
+                .HasRequired(c => c.Employer)
+                .WithMany(e => e.Customers)
                 .HasForeignKey(c => c.EmployerId);
 
-            //modelBuilder.Entity<Employer>()
-            //    .HasMany(e => e.Works)
-            //    .WithRequired(w => w.Employer)
-            //    .HasForeignKey(w => w.EmployerId);
+            // work and Employer
+            modelBuilder.Entity<Work>()
+                .HasRequired(w => w.Employer)
+                .WithMany(e => e.Works)
+                .HasForeignKey(w => w.EmployerId);
 
-            //modelBuilder.Entity<Customer>()
-            //    .HasMany(c => c.Works)
-            //    .WithRequired(w => w.Customer)
-            //    .HasForeignKey(w => w.CustomerId);
-
-            
-
-            //modelBuilder.Entity<Work>()
-            //    .HasRequired(w => w.Customer)
-            //    .WithMany(c => c.Works)
-            //    .HasForeignKey(w => w.CustomerId);
-
+            modelBuilder.Entity<Work>()
+                .HasRequired(w => w.Customer)
+                .WithMany(c => c.Works)
+                .HasForeignKey(w => w.CustomerId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

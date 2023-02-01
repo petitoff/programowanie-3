@@ -89,6 +89,14 @@
     <Compile Include="Migrations\202301312311472_Add-Works4.designer.cs">
       <DependentUpon>202301312311472_Add-Works4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202302010015361_Add-Works5.cs" />
+    <Compile Include="Migrations\202302010015361_Add-Works5.designer.cs">
+      <DependentUpon>202302010015361_Add-Works5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202302010040596_Add-Works6.cs" />
+    <Compile Include="Migrations\202302010040596_Add-Works6.designer.cs">
+      <DependentUpon>202302010040596_Add-Works6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -137,6 +145,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301312311472_Add-Works4.resx">
       <DependentUpon>202301312311472_Add-Works4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202302010015361_Add-Works5.resx">
+      <DependentUpon>202302010015361_Add-Works5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202302010040596_Add-Works6.resx">
+      <DependentUpon>202302010040596_Add-Works6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
