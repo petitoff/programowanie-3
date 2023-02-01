@@ -90,19 +90,6 @@ namespace CarMechanic.UI.ViewModel
         private void OpenSecondWindowEditCustomer(object obj)
         {
             SelectedViewModel = EditCustomerViewModel;
-
-            //if (obj is CustomerItemViewModel customerItemViewModel)
-            //{
-            //    var customer = new Customer
-            //    {
-            //        Id = customerItemViewModel.Id,
-            //        FirstName = customerItemViewModel.FirstName,
-            //        LastName = customerItemViewModel.LastName
-            //    };
-
-            //    EditCustomerViewModel.InsertData(customer);
-            //}
-
             EditCustomerViewModel.InsertData(obj as Customer);
 
 
