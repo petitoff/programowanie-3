@@ -32,7 +32,7 @@ namespace CarMechanic.UI.ViewModel
             EditCustomerViewModel = editCustomerViewModel;
             SelectedViewModel = AddCustomerViewModel;
 
-            Customers = new ObservableCollection<CustomerItemViewModel>();
+            Customers = new ObservableCollection<Customer>();
 
             OpenSecondWindowAddCustomerCommand = new DelegateCommand(OpenSecondWindowAddCustomer);
             OpenSecondWindowEditCustomerCommand = new DelegateCommand(OpenSecondWindowEditCustomer);
@@ -49,7 +49,7 @@ namespace CarMechanic.UI.ViewModel
         }
         public AddCustomerViewModel AddCustomerViewModel { get; }
         public EditCustomerViewModel EditCustomerViewModel { get; }
-        public ObservableCollection<CustomerItemViewModel> Customers { get; }
+        public ObservableCollection<Customer> Customers { get; }
         public DelegateCommand OpenSecondWindowAddCustomerCommand { get; }
         public DelegateCommand OpenSecondWindowEditCustomerCommand { get; }
 
@@ -91,17 +91,20 @@ namespace CarMechanic.UI.ViewModel
         {
             SelectedViewModel = EditCustomerViewModel;
 
-            if (obj is CustomerItemViewModel customerItemViewModel)
-            {
-                var customer = new Customer
-                {
-                    Id = customerItemViewModel.Id,
-                    FirstName = customerItemViewModel.FirstName,
-                    LastName = customerItemViewModel.LastName
-                };
+            //if (obj is CustomerItemViewModel customerItemViewModel)
+            //{
+            //    var customer = new Customer
+            //    {
+            //        Id = customerItemViewModel.Id,
+            //        FirstName = customerItemViewModel.FirstName,
+            //        LastName = customerItemViewModel.LastName
+            //    };
 
-                EditCustomerViewModel.InsertData(customer);
-            }
+            //    EditCustomerViewModel.InsertData(customer);
+            //}
+
+            EditCustomerViewModel.InsertData(obj as Customer);
+
 
             OpenSecondWindow();
         }
@@ -124,7 +127,7 @@ namespace CarMechanic.UI.ViewModel
 
             foreach (var customer in customers)
             {
-                Customers.Add(new CustomerItemViewModel(customer));
+                Customers.Add(customer);
             }
         }
 
