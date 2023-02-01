@@ -13,14 +13,12 @@ namespace CarMechanic.UI.ViewModel
         private string _roleOfUser;
         private readonly IEmployerDataService _employerDataService;
         private BaseViewModel _selectedViewModel;
-        private readonly IEventAggregator _eventAggregator;
         private readonly IUserDataStore _userDataStore;
 
         public MainViewModel(IEmployerDataService employerDataService, DashboardViewModel dashboardViewModel,
             CustomersViewModel customersViewModel, WorksViewModel worksViewModel, IEventAggregator eventAggregator, IUserDataStore userDataStore)
         {
             _employerDataService = employerDataService;
-            _eventAggregator = eventAggregator;
             _userDataStore = userDataStore;
 
             Employers = new ObservableCollection<Employer>();
@@ -55,7 +53,6 @@ namespace CarMechanic.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-
 
         public string NameOfUser
         {

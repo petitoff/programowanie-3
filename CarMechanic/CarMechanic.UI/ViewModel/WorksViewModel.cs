@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using CarMechanic.Model;
 using CarMechanic.UI.Command;
 using CarMechanic.UI.Data;
-using CarMechanic.UI.ViewModel.CustomerService;
 using CarMechanic.UI.ViewModel.WorkService;
 using CarMechanic.UI.Window;
 
@@ -76,6 +70,12 @@ namespace CarMechanic.UI.ViewModel
 
         private void OnOpenSecondWindowEditWorkExecute(object obj)
         {
+            // create from obj a work, obj is a WorkItemViewModel
+            var work = new Work();
+            var workItemViewModel = (WorkItemViewModel)obj;
+            work = workItemViewModel.Work;
+
+            EditWorkViewModel.InitializeWork(work);
             SelectedViewModel = EditWorkViewModel;
             OpenSecondWindow();
         }

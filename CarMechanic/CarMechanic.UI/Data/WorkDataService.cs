@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Documents;
 using CarMechanic.DataAccess;
 using CarMechanic.Model;
 
@@ -39,11 +38,11 @@ namespace CarMechanic.UI.Data
         {
             using (var ctx = _contextCreator())
             {
-                // if work.Customer.FirstName and work.Customer.LastName is in the database, then add work to the customer and employer
+                // find customer by FirstName and LastName and add work to the customer and employer
                 var customer = await ctx.Customers.AsNoTracking().FirstOrDefaultAsync(c => c.FirstName == work.Customer.FirstName && c.LastName == work.Customer.LastName);
                 if (customer != null)
                 {
-                    //work.CustomerId = customer.Id;
+                    work.CustomerId = customer.Id;
                     work.EmployerId = employerId;
                     ctx.Works.Add(work);
                     await ctx.SaveChangesAsync();
