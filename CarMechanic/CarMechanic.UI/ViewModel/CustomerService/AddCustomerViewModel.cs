@@ -8,7 +8,7 @@ using CarMechanic.UI.Command;
 using CarMechanic.UI.Data;
 using Prism.Events;
 
-namespace CarMechanic.UI.ViewModel.CustomerItemViewModel
+namespace CarMechanic.UI.ViewModel.CustomerService
 {
     public class AddCustomerViewModel : BaseViewModel
     {

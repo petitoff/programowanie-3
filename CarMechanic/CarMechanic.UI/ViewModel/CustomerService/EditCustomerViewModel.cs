@@ -4,7 +4,7 @@ using CarMechanic.UI.Data;
 using CarMechanic.UI.Event;
 using Prism.Events;
 
-namespace CarMechanic.UI.ViewModel.CustomerServiceViewModel
+namespace CarMechanic.UI.ViewModel.CustomerService
 {
     public class EditCustomerViewModel : BaseViewModel
     {

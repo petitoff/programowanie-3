@@ -17,7 +17,7 @@ namespace CarMechanic.UI.ViewModel
         private readonly IUserDataStore _userDataStore;
 
         public MainViewModel(IEmployerDataService employerDataService, DashboardViewModel dashboardViewModel,
-            CustomersViewModel customersViewModel, IEventAggregator eventAggregator, IUserDataStore userDataStore)
+            CustomersViewModel customersViewModel, WorksViewModel worksViewModel, IEventAggregator eventAggregator, IUserDataStore userDataStore)
         {
             _employerDataService = employerDataService;
             _eventAggregator = eventAggregator;
@@ -28,12 +28,23 @@ namespace CarMechanic.UI.ViewModel
             DashboardViewModel = dashboardViewModel;
             SelectedViewModel = DashboardViewModel;
             CustomersViewModel = customersViewModel;
+            WorksViewModel = worksViewModel;
 
             GoToDashboardCommand = new DelegateCommand(GoToDashboard);
             GoToCustomersCommand = new DelegateCommand(GoToCustomers);
+            GoToWorksCommand = new DelegateCommand(GoToWorks);
         }
 
         public ObservableCollection<Employer> Employers { get; set; }
+
+        public DashboardViewModel DashboardViewModel { get; }
+        public CustomersViewModel CustomersViewModel { get; }
+        public WorksViewModel WorksViewModel { get; }
+        // ReSharper disable once UnusedAutoPropertyAccessor.Global
+        public DelegateCommand GoToDashboardCommand { get; }
+        // ReSharper disable once UnusedAutoPropertyAccessor.Global
+        public DelegateCommand GoToCustomersCommand { get; }
+        public DelegateCommand GoToWorksCommand { get; }
 
         public BaseViewModel SelectedViewModel
         {
@@ -44,13 +55,6 @@ namespace CarMechanic.UI.ViewModel
                 OnPropertyChanged();
             }
         }
-
-        public DashboardViewModel DashboardViewModel { get; }
-        public CustomersViewModel CustomersViewModel { get; }
-        // ReSharper disable once UnusedAutoPropertyAccessor.Global
-        public DelegateCommand GoToDashboardCommand { get; }
-        // ReSharper disable once UnusedAutoPropertyAccessor.Global
-        public DelegateCommand GoToCustomersCommand { get; }
 
 
         public string NameOfUser
@@ -86,11 +90,16 @@ namespace CarMechanic.UI.ViewModel
             SelectedViewModel = DashboardViewModel;
         }
 
-
         private void GoToCustomers(object obj)
         {
             CustomersViewModel.Initialize();
             SelectedViewModel = CustomersViewModel;
+        }
+        
+        private void GoToWorks(object obj)
+        {
+            WorksViewModel.Initialize();
+            SelectedViewModel = WorksViewModel;
         }
     }
 }

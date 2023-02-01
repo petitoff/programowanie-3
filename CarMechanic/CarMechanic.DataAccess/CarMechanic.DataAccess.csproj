@@ -69,6 +69,26 @@
     <Compile Include="Migrations\202301311330435_InitialMigration3.designer.cs">
       <DependentUpon>202301311330435_InitialMigration3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202301312119119_Add-Works.cs" />
+    <Compile Include="Migrations\202301312119119_Add-Works.designer.cs">
+      <DependentUpon>202301312119119_Add-Works.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301312125502_Add-Works1.cs" />
+    <Compile Include="Migrations\202301312125502_Add-Works1.designer.cs">
+      <DependentUpon>202301312125502_Add-Works1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301312252469_Add-Works2.cs" />
+    <Compile Include="Migrations\202301312252469_Add-Works2.designer.cs">
+      <DependentUpon>202301312252469_Add-Works2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301312253480_Add-Works3.cs" />
+    <Compile Include="Migrations\202301312253480_Add-Works3.designer.cs">
+      <DependentUpon>202301312253480_Add-Works3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301312311472_Add-Works4.cs" />
+    <Compile Include="Migrations\202301312311472_Add-Works4.designer.cs">
+      <DependentUpon>202301312311472_Add-Works4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -102,6 +122,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301311330435_InitialMigration3.resx">
       <DependentUpon>202301311330435_InitialMigration3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301312119119_Add-Works.resx">
+      <DependentUpon>202301312119119_Add-Works.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301312125502_Add-Works1.resx">
+      <DependentUpon>202301312125502_Add-Works1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301312252469_Add-Works2.resx">
+      <DependentUpon>202301312252469_Add-Works2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301312253480_Add-Works3.resx">
+      <DependentUpon>202301312253480_Add-Works3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301312311472_Add-Works4.resx">
+      <DependentUpon>202301312311472_Add-Works4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

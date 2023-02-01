@@ -8,7 +8,7 @@ using Prism.Events;
 
 namespace CarMechanic.UI.Event
 {
-    internal class DeleteCustomerFromListEvent : PubSubEvent<Customer>
+    public class DeleteCustomerFromListEvent : PubSubEvent<Customer>
     {
     }
 }

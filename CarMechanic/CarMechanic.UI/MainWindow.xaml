@@ -25,6 +25,10 @@
         <DataTemplate DataType="{x:Type viewModel:CustomersViewModel}">
             <view:CustomersView />
         </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:WorksViewModel}">
+            <view:WorksView />
+        </DataTemplate>
     </Window.Resources>
 
     <Border Background="#eff2f7"
@@ -125,7 +129,8 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource MenuButton}">
+                            <Button Style="{StaticResource MenuButton}"
+                                    Command="{Binding GoToWorksCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <iconPacks:PackIconMaterial Kind="Car"
                                                                 Style="{StaticResource MenuButtonIcon}" />

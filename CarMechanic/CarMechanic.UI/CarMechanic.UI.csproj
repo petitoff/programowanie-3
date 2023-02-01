@@ -110,16 +110,20 @@
     <Compile Include="Data\EmployerDataService.cs" />
     <Compile Include="Data\IEmployerDataService.cs" />
     <Compile Include="Data\IUserDataStore.cs" />
+    <Compile Include="Data\IWorkDataService.cs" />
+    <Compile Include="Data\WorkDataService.cs" />
     <Compile Include="Data\UserDataStore.cs" />
     <Compile Include="Event\DeleteCustomerFromListEvent.cs" />
     <Compile Include="Startup\Bootstrapper.cs" />
     <Compile Include="Event\UpdateCustomerListEvent.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
-    <Compile Include="ViewModel\CustomerServiceViewModel\AddCustomerViewModel.cs" />
-    <Compile Include="ViewModel\CustomerServiceViewModel\EditCustomerViewModel.cs" />
+    <Compile Include="ViewModel\CustomerService\AddCustomerViewModel.cs" />
+    <Compile Include="ViewModel\CustomerService\EditCustomerViewModel.cs" />
     <Compile Include="ViewModel\CustomersViewModel.cs" />
     <Compile Include="ViewModel\DashboardViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\WorkService\AddWorkViewModel.cs" />
+    <Compile Include="ViewModel\WorksViewModel.cs" />
     <Compile Include="View\AddCustomerView.xaml.cs">
       <DependentUpon>AddCustomerView.xaml</DependentUpon>
     </Compile>
@@ -131,6 +135,9 @@
     </Compile>
     <Compile Include="View\EditCustomerView.xaml.cs">
       <DependentUpon>EditCustomerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WorksView.xaml.cs">
+      <DependentUpon>WorksView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Window\SecondWindow.xaml.cs">
       <DependentUpon>SecondWindow.xaml</DependentUpon>
@@ -162,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EditCustomerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WorksView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
