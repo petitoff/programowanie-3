@@ -40,6 +40,8 @@
                                     Binding="{Binding Price}" />
                 <DataGridTextColumn Header="Time"
                                     Binding="{Binding Time}" />
+                <DataGridTextColumn Header="Customer"
+                                    Binding="{Binding DisplayMember}" />
 
                 <!--// add button-->
                 <DataGridTemplateColumn>

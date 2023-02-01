@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CarMechanic.Model;
 using CarMechanic.UI.Command;
 using CarMechanic.UI.Data;
+using CarMechanic.UI.ViewModel.WorkService;
 
 namespace CarMechanic.UI.ViewModel
 {
@@ -20,14 +21,14 @@ namespace CarMechanic.UI.ViewModel
             _workDataService = workDataService;
             _userDataStore = userDataStore;
 
-            Works = new ObservableCollection<Work>();
+            Works = new ObservableCollection<WorkItemViewModel>();
 
             OpenSecondWindowEditCustomerCommand = new DelegateCommand(OnOpenSecondWindowEditCustomerExecute);
         }
 
         public DelegateCommand OpenSecondWindowEditCustomerCommand { get; }
 
-        public ObservableCollection<Work> Works { get; set; }
+        public ObservableCollection<WorkItemViewModel> Works { get; set; }
 
         public void Initialize()
         {
@@ -36,12 +37,12 @@ namespace CarMechanic.UI.ViewModel
 
         private async void LoadWorks()
         {
-            //var works = await _workDataService.GetWorksByEmployerId(_userDataStore.CurrentUserId);
-            //Works.Clear();
-            //foreach (var work in works)
-            //{
-            //    Works.Add(work);
-            //}
+            var works = await _workDataService.GetWorksWithCustomerByEmployerId(_userDataStore.CurrentUserId);
+            Works.Clear();
+            foreach (var work in works)
+            {
+                Works.Add(new WorkItemViewModel(work, $"{work.Customer.FirstName} {work.Customer.LastName}"));
+            }
         }
 
         private void OnOpenSecondWindowEditCustomerExecute(object obj)

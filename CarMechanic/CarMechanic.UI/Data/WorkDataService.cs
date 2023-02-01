@@ -18,15 +18,21 @@ namespace CarMechanic.UI.Data
             _contextCreator = contextCreator;
         }
 
-        // get works by employer id
-        //public async Task<List<Work>> GetWorksByEmployerId(int employerId)
-        //{
-        //    using (var ctx = _contextCreator())
-        //    {
-        //        return await ctx.Works
-        //            .Where(w => w.EmployerId == employerId)
-        //            .ToListAsync();
-        //    }
-        //}
+
+        public async Task<List<Work>> GetWorksByEmployerId(int employerId)
+        {
+            using (var ctx = _contextCreator())
+            {
+                return await ctx.Works.AsNoTracking().Where(w => w.EmployerId == employerId).ToListAsync();
+            }
+        }
+
+        public async Task<List<Work>> GetWorksWithCustomerByEmployerId(int employerId)
+        {
+            using (var ctx = _contextCreator())
+            {
+                return await ctx.Works.AsNoTracking().Where(w => w.EmployerId == employerId).Include(w => w.Customer).ToListAsync();
+            }
+        }
     }
 }

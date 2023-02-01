@@ -6,6 +6,7 @@ namespace CarMechanic.UI.Data
 {
     public interface IWorkDataService
     {
-        //Task<List<Work>> GetWorksByEmployerId(int employerId);
+        Task<List<Work>> GetWorksByEmployerId(int employerId);
+        Task<List<Work>> GetWorksWithCustomerByEmployerId(int employerId);
     }
 }
