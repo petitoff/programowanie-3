@@ -34,5 +34,31 @@ namespace CarMechanic.UI.Data
                 return await ctx.Works.AsNoTracking().Where(w => w.EmployerId == employerId).Include(w => w.Customer).ToListAsync();
             }
         }
+
+        public async Task AddWorkToEmployerAndCustomer(Work work, int employerId)
+        {
+            using (var ctx = _contextCreator())
+            {
+                // if work.Customer.FirstName and work.Customer.LastName is in the database, then add work to the customer and employer
+                var customer = await ctx.Customers.AsNoTracking().FirstOrDefaultAsync(c => c.FirstName == work.Customer.FirstName && c.LastName == work.Customer.LastName);
+                if (customer != null)
+                {
+                    //work.CustomerId = customer.Id;
+                    work.EmployerId = employerId;
+                    ctx.Works.Add(work);
+                    await ctx.SaveChangesAsync();
+                }
+                else
+                {
+                    // if work.Customer.FirstName and work.Customer.LastName is not in the database, then add work.Customer to the database and then add work to the customer and employer
+                    ctx.Customers.Add(work.Customer);
+                    await ctx.SaveChangesAsync();
+                    work.CustomerId = work.Customer.Id;
+                    work.EmployerId = employerId;
+                    ctx.Works.Add(work);
+                    await ctx.SaveChangesAsync();
+                }
+            }
+        }
     }
 }

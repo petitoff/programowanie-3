@@ -8,6 +8,7 @@
         xmlns:view="clr-namespace:CarMechanic.UI.View"
         xmlns:customerServiceViewModel="clr-namespace:CarMechanic.UI.ViewModel.CustomerService"
         xmlns:customerService="clr-namespace:CarMechanic.UI.ViewModel.CustomerService"
+        xmlns:workService="clr-namespace:CarMechanic.UI.ViewModel.WorkService"
         mc:Ignorable="d"
         Title="SecondWindow"
         Height="450"
@@ -20,9 +21,16 @@
         <DataTemplate DataType="{x:Type customerService:EditCustomerViewModel}">
             <view:EditCustomerView />
         </DataTemplate>
+
+        <DataTemplate DataType="{x:Type workService:AddWorkViewModel}">
+            <view:AddWorkView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type workService:EditWorkViewModel}">
+            <view:EditWorkView />
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
-        <ContentControl Content="{Binding SelectedViewModel}"/>
+        <ContentControl Content="{Binding SelectedViewModel}" />
     </Grid>
 </Window>

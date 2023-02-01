@@ -123,10 +123,14 @@
     <Compile Include="ViewModel\DashboardViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\WorkService\AddWorkViewModel.cs" />
+    <Compile Include="ViewModel\WorkService\EditWorkViewModel.cs" />
     <Compile Include="ViewModel\WorkService\WorkItemViewModel.cs" />
     <Compile Include="ViewModel\WorksViewModel.cs" />
     <Compile Include="View\AddCustomerView.xaml.cs">
       <DependentUpon>AddCustomerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddWorkView.xaml.cs">
+      <DependentUpon>AddWorkView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CustomersView.xaml.cs">
       <DependentUpon>CustomersView.xaml</DependentUpon>
@@ -136,6 +140,9 @@
     </Compile>
     <Compile Include="View\EditCustomerView.xaml.cs">
       <DependentUpon>EditCustomerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditWorkView.xaml.cs">
+      <DependentUpon>EditWorkView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\WorksView.xaml.cs">
       <DependentUpon>WorksView.xaml</DependentUpon>
@@ -161,6 +168,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AddWorkView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CustomersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -170,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EditCustomerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditWorkView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

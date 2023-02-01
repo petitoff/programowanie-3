@@ -8,5 +8,6 @@ namespace CarMechanic.UI.Data
     {
         Task<List<Work>> GetWorksByEmployerId(int employerId);
         Task<List<Work>> GetWorksWithCustomerByEmployerId(int employerId);
+        Task AddWorkToEmployerAndCustomer(Work work, int employerId);
     }
 }

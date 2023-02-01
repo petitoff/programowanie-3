@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <Button Style="{StaticResource AddButton}"
-                Command="{Binding OpenSecondWindowAddCustomerCommand}">
+                Command="{Binding OpenSecondWindowAddWorkCommand}">
             <StackPanel Orientation="Horizontal">
                 <iconPacks:PackIconMaterial Kind="Plus"
                                             VerticalAlignment="Center"
@@ -48,7 +48,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="Edit"
-                                    Command="{Binding DataContext.OpenSecondWindowEditCustomerCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                    Command="{Binding DataContext.OpenSecondWindowEditWorkCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                     CommandParameter="{Binding}">
                             </Button>
                         </DataTemplate>
