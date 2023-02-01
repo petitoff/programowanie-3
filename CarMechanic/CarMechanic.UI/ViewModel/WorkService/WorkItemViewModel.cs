@@ -18,6 +18,8 @@ namespace CarMechanic.UI.ViewModel.WorkService
             _displayMember = displayMember;
         }
 
+        public Work Work => _work;
+
         public string DisplayMember
         {
             get => _displayMember;
