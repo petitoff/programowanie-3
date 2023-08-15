@@ -15,7 +15,7 @@ namespace lista_3.Service
                 using var sr = new StreamReader(filePath);
                 return (T)xmlSerializer.Deserialize(sr);
             }
-            catch (InvalidOperationException e)
+            catch (InvalidOperationException)
             {
                 return null;
             }
