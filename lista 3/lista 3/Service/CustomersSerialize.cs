@@ -7,13 +7,15 @@ namespace lista_3.Service
     {
         public static void SerializeToXml<T>(T modelObject, string xmlFilePath)
         {
-            var xmlSerializer = new XmlSerializer(modelObject?.GetType()!);
+            var xmlSerializer = new XmlSerializer(typeof(T));
 
             using var writer = File.CreateText(xmlFilePath);
-            if (modelObject != null)
+            if (modelObject == null)
             {
-                xmlSerializer.Serialize(writer, modelObject);
+                return;
             }
+
+            xmlSerializer.Serialize(writer, modelObject);
         }
     }
 }
