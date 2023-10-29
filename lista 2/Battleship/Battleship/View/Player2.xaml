@@ -41,6 +41,8 @@
             <TextBlock Margin="0 10 0 0"
                        Text="{Binding IsPlayer2Ready, Converter={StaticResource IsPlayerReadyTextConverter}}"
                        Foreground="{Binding IsPlayer2Ready, Converter={StaticResource IsPlayerReadyConverter}}" />
+            <TextBlock Margin="0 10 0 0"
+                       Text="{Binding PlayerWin, Converter={StaticResource PlayerWinConverter}}" />
         </StackPanel>
 
         <Grid Grid.Column="2"

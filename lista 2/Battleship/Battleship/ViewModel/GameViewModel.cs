@@ -13,6 +13,7 @@ namespace Battleship.ViewModel
         private IsReady _isPlayer2Ready;
 
         private Player _playerTurn;
+        private Player? _playerWin;
 
         public AddShipPositionCommand AddShip { get; }
         public ShootShipPositionCommand ShootShip { get; }
@@ -52,6 +53,16 @@ namespace Battleship.ViewModel
             private set
             {
                 _playerTurn = value;
+                OnPropertyChanged();
+            }
+        }
+        
+        public Player? PlayerWin
+        {
+            get => _playerWin;
+            private set
+            {
+                _playerWin = value;
                 OnPropertyChanged();
             }
         }
@@ -165,6 +176,11 @@ namespace Battleship.ViewModel
             {
                 return;
             }
+            
+            if(IsPlayer1Ready == IsReady.NotReady || IsPlayer2Ready == IsReady.NotReady)
+            {
+                return;
+            }
 
             ValidateShoot(battlefield);
         }
@@ -206,6 +222,16 @@ namespace Battleship.ViewModel
             {
                 foundShoot.IsShootGood = IsShootGoodEnum.Hit;
                 found.IsShootGood = IsShootGoodEnum.Hit;
+                CheckIfPlayerWin(found);
+            }
+        }
+
+        private void CheckIfPlayerWin(BattlefieldShoot found)
+        {
+            var isPlayerWin = found.Player == Player.Player1 ? Battlefield1.All(x => x.IsShootGood != IsShootGoodEnum.Occupied) : Battlefield2.All(x => x.IsShootGood != IsShootGoodEnum.Occupied);
+            if (isPlayerWin)
+            {
+                PlayerWin = found.Player == Player.Player1 ? Player.Player2 : Player.Player1;
             }
         }
 
