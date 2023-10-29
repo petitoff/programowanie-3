@@ -31,5 +31,6 @@
         <converter:IsPlayerReadyConverter x:Key="IsPlayerReadyConverter" />
         <converter:IsPlayerReadyTextConverter x:Key="IsPlayerReadyTextConverter" />
         <converter:PlayerTurnConverter x:Key="PlayerTurnConverter"/>
+        <converter:PlayerWinConverter x:Key="PlayerWinConverter" />
     </Application.Resources>
 </Application>
