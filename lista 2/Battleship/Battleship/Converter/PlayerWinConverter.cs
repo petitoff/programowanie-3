@@ -9,11 +9,6 @@ namespace Battleship.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null)
-            {
-                return "";
-            }
-
             if (!(value is Const.Player player)) return "";
             
             switch (player)
@@ -25,8 +20,6 @@ namespace Battleship.Converter
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-
-            return "";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
