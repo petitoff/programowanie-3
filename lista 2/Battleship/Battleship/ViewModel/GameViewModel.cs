@@ -56,7 +56,7 @@ namespace Battleship.ViewModel
                 OnPropertyChanged();
             }
         }
-        
+
         public Player? PlayerWin
         {
             get => _playerWin;
@@ -176,8 +176,8 @@ namespace Battleship.ViewModel
             {
                 return;
             }
-            
-            if(IsPlayer1Ready == IsReady.NotReady || IsPlayer2Ready == IsReady.NotReady)
+
+            if (IsPlayer1Ready == IsReady.NotReady || IsPlayer2Ready == IsReady.NotReady)
             {
                 return;
             }
@@ -187,7 +187,6 @@ namespace Battleship.ViewModel
 
         private void ValidateShoot(BattlefieldShoot battlefield)
         {
-
             if (IsPlayer1Ready == IsReady.NotReady || IsPlayer2Ready == IsReady.NotReady)
             {
                 return;
@@ -200,13 +199,17 @@ namespace Battleship.ViewModel
                     return;
             }
 
-            var found = battlefield.Player == Player.Player1 ? Battlefield1.FirstOrDefault(x => x.Id == battlefield.Id) : Battlefield2.FirstOrDefault(x => x.Id == battlefield.Id);
+            var found = battlefield.Player == Player.Player1
+                ? Battlefield1.FirstOrDefault(x => x.Id == battlefield.Id)
+                : Battlefield2.FirstOrDefault(x => x.Id == battlefield.Id);
             if (found == null)
             {
                 return;
             }
 
-            var foundShoot = battlefield.Player == Player.Player1 ? BattlefieldShoot1.FirstOrDefault(x => x.Id == found.Id) : BattlefieldShoot2.FirstOrDefault(x => x.Id == found.Id);
+            var foundShoot = battlefield.Player == Player.Player1
+                ? BattlefieldShoot1.FirstOrDefault(x => x.Id == found.Id)
+                : BattlefieldShoot2.FirstOrDefault(x => x.Id == found.Id);
             if (foundShoot == null)
             {
                 return;
@@ -228,7 +231,9 @@ namespace Battleship.ViewModel
 
         private void CheckIfPlayerWin(BattlefieldShoot found)
         {
-            var isPlayerWin = found.Player == Player.Player1 ? Battlefield1.All(x => x.IsShootGood != IsShootGoodEnum.Occupied) : Battlefield2.All(x => x.IsShootGood != IsShootGoodEnum.Occupied);
+            var isPlayerWin = found.Player == Player.Player1
+                ? Battlefield1.All(x => x.IsShootGood != IsShootGoodEnum.Occupied)
+                : Battlefield2.All(x => x.IsShootGood != IsShootGoodEnum.Occupied);
             if (isPlayerWin)
             {
                 PlayerWin = found.Player == Player.Player1 ? Player.Player2 : Player.Player1;
