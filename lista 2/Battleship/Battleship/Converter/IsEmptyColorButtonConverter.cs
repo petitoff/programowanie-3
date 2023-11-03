@@ -15,28 +15,19 @@ namespace Battleship.Converter
 
             var isShootGood = (IsShootGoodEnum)value;
 
-            if (isShootGood == IsShootGoodEnum.Empty)
+            switch (isShootGood)
             {
-                return "#fff";
+                case IsShootGoodEnum.Empty:
+                    return "#fff";
+                case IsShootGoodEnum.Miss:
+                    return "#f00";
+                case IsShootGoodEnum.Hit:
+                    return "#00f";
+                case IsShootGoodEnum.Occupied:
+                    return "#000";
+                default:
+                    return "#fff";
             }
-
-            if (isShootGood == IsShootGoodEnum.Miss)
-            {
-                return "#f00";
-            }
-
-            if (isShootGood == IsShootGoodEnum.Hit)
-            {
-                return "#00f";
-            }
-
-            if (isShootGood == IsShootGoodEnum.Occupied)
-            {
-                return "#000";
-            }
-
-            return "#fff";
-
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
