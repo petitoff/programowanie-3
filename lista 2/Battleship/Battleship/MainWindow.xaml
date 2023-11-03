@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewmodel="clr-namespace:Battleship.ViewModel"
+        xmlns:userControls="clr-namespace:Battleship.View.UserControls"
         d:DataContext="{d:DesignInstance Type=viewmodel:GameViewModel}"
         mc:Ignorable="d"
         Title="Player1"
@@ -20,30 +21,13 @@
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Margin="0 20 0 0">
-            <StackPanel.Resources>
-                <Style TargetType="Button"
-                       BasedOn="{StaticResource ButtonOptions}" />
-                <Style TargetType="TextBlock"
-                       BasedOn="{StaticResource HeaderTitle}" />
-            </StackPanel.Resources>
+        <userControls:OptionsControl
+            SubmitCommand="{Binding SubmitReadyPlayer1Command}"
+            PlayerReadyText="{Binding IsPlayer1Ready, Converter={StaticResource IsPlayerReadyTextConverter}}"
+            PlayerReadyForeground="{Binding IsPlayer1Ready, Converter={StaticResource IsPlayerReadyConverter}}"
+            Grid.Column="0" />
 
-            <TextBlock Text="Opcje" />
-            <Button Content="Gotowy"
-                    Command="{Binding SubmitReadyPlayer1Command}"
-                    CommandParameter="{Binding .}" />
-            <Button Content="Reset"
-                    Command="{Binding RestartGameCommand}" />
-            <!--<Button Content="Rotacja statku" />-->
 
-            <TextBlock Margin="0 10 0 0"
-                       Text="{Binding PlayerTurn, Converter={StaticResource PlayerTurnConverter}}" />
-            <TextBlock Margin="0 10 0 0"
-                       Text="{Binding IsPlayer1Ready, Converter={StaticResource IsPlayerReadyTextConverter}}"
-                       Foreground="{Binding IsPlayer1Ready, Converter={StaticResource IsPlayerReadyConverter}}" />
-            <TextBlock Margin="0 10 0 0"
-                       Text="{Binding PlayerWin, Converter={StaticResource PlayerWinConverter}}" />
-        </StackPanel>
 
         <Grid Grid.Column="2"
               VerticalAlignment="Center">
