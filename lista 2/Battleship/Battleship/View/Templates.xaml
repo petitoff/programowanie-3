@@ -1,0 +1,28 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataTemplate x:Key="AddButtonTemplate">
+        <Button CommandParameter="{Binding}"
+                Command="{Binding DataContext.AddShip, RelativeSource={RelativeSource AncestorType=Window}}"
+                BorderBrush="Black"
+                Background="{Binding IsShootGood, Converter={StaticResource IsEmptyColorButtonConverter}}"
+                BorderThickness="1"
+                Width="30"
+                Height="30"
+                Margin="1" />
+    </DataTemplate>
+    
+    <DataTemplate x:Key="ShootButtonTemplate">
+        <Button CommandParameter="{Binding}"
+                Command="{Binding DataContext.ShootShip, RelativeSource={RelativeSource AncestorType=Window}}"
+                BorderBrush="Black"
+                Background="{Binding IsShootGood, Converter={StaticResource IsShootColorButtonConverter}}"
+                BorderThickness="1"
+                Width="30"
+                Height="30"
+                Margin="1" />
+    </DataTemplate>
+
+    <ItemsPanelTemplate x:Key="WrapPanelTemplate">
+        <WrapPanel />
+    </ItemsPanelTemplate>
+</ResourceDictionary>
