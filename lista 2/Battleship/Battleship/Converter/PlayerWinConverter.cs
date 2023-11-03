@@ -2,7 +2,6 @@ using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
-using Battleship.Const;
 
 namespace Battleship.Converter
 {
@@ -14,17 +13,20 @@ namespace Battleship.Converter
             {
                 return "";
             }
+
+            if (!(value is Const.Player player)) return "";
             
-            var playerTurn = (Player)value;
-            
-            if (playerTurn == Player.Player1)
+            switch (player)
             {
-                return "Gracz 1 wygrał";
+                case Const.Player.Player1:
+                    return "Player 1";
+                case Const.Player.Player2:
+                    return "Player 2";
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
-            else
-            {
-                return "Gracz 2 wygrał";
-            }
+
+            return "";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

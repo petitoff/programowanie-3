@@ -66,6 +66,7 @@
     <Compile Include="Converter\IsPlayerReadyTextConverter.cs" />
     <Compile Include="Converter\IsShootColorButtonConverter.cs" />
     <Compile Include="Converter\PlayerTurnConverter.cs" />
+    <Compile Include="Converter\PlayerWinConverter.cs" />
     <Compile Include="Model\BattlefieldShoot.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\GameViewModel.cs" />
