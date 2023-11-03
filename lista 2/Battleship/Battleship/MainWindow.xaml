@@ -27,8 +27,6 @@
             PlayerReadyForeground="{Binding IsPlayer1Ready, Converter={StaticResource IsPlayerReadyConverter}}"
             Grid.Column="0" />
 
-
-
         <Grid Grid.Column="2"
               VerticalAlignment="Center">
             <ItemsControl ItemsSource="{Binding Battlefield1}">
