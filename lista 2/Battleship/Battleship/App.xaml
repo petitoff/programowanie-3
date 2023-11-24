@@ -4,33 +4,31 @@
              xmlns:converter="clr-namespace:Battleship.Converter"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary>
-            <!--buttons-->
-            <Style x:Key="ButtonOptions"
-                   TargetType="{x:Type Button}">
-                <Setter Property="Margin"
-                        Value="0 5 0 0" />
-                <Setter Property="Height"
-                        Value="30" />
-                <Setter Property="Width"
-                        Value="100" />
-            </Style>
+        <!--buttons-->
+        <Style x:Key="ButtonOptions"
+               TargetType="{x:Type Button}">
+            <Setter Property="Margin"
+                    Value="0 5 0 0" />
+            <Setter Property="Height"
+                    Value="30" />
+            <Setter Property="Width"
+                    Value="100" />
+        </Style>
 
-            <!--TextBlock-->
-            <Style x:Key="HeaderTitle"
-                   TargetType="TextBlock">
-                <Setter Property="Foreground"
-                        Value="#fff" />
-                <Setter Property="HorizontalAlignment"
-                        Value="Center" />
-            </Style>
+        <!--TextBlock-->
+        <Style x:Key="HeaderTitle"
+               TargetType="TextBlock">
+            <Setter Property="Foreground"
+                    Value="#fff" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+        </Style>
 
-            <converter:IsEmptyColorButtonConverter x:Key="IsEmptyColorButtonConverter" />
-            <converter:IsShootColorButtonConverter x:Key="IsShootColorButtonConverter" />
-            <converter:IsPlayerReadyConverter x:Key="IsPlayerReadyConverter" />
-            <converter:IsPlayerReadyTextConverter x:Key="IsPlayerReadyTextConverter" />
-            <converter:PlayerTurnConverter x:Key="PlayerTurnConverter" />
-            <converter:PlayerWinConverter x:Key="PlayerWinConverter" />
-        </ResourceDictionary>
+        <converter:IsEmptyColorButtonConverter x:Key="IsEmptyColorButtonConverter" />
+        <converter:IsShootColorButtonConverter x:Key="IsShootColorButtonConverter" />
+        <converter:IsPlayerReadyConverter x:Key="IsPlayerReadyConverter" />
+        <converter:IsPlayerReadyTextConverter x:Key="IsPlayerReadyTextConverter" />
+        <converter:PlayerTurnConverter x:Key="PlayerTurnConverter" />
+        <converter:PlayerWinConverter x:Key="PlayerWinConverter" />
     </Application.Resources>
 </Application>

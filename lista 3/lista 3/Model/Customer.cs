@@ -9,7 +9,6 @@ namespace lista_3.Model
     {
         private string? _firstName;
         private string? _lastName;
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public string? FirstName
         {
@@ -32,6 +31,9 @@ namespace lista_3.Model
                 OnPropertyChanged();
             }
         }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {

@@ -10,7 +10,7 @@
                 Height="30"
                 Margin="1" />
     </DataTemplate>
-    
+
     <DataTemplate x:Key="ShootButtonTemplate">
         <Button CommandParameter="{Binding}"
                 Command="{Binding DataContext.ShootShip, RelativeSource={RelativeSource AncestorType=Window}}"
