@@ -20,7 +20,14 @@ namespace lista_3.ViewModel
 
         private void AddNewCustomer(object? obj)
         {
-            _customersViewModel.GetDataAndCloseAddNewCustomerViewModel(Customer);
+            
+            var customer = new Customer
+            {
+                FirstName = Customer.FirstName,
+                LastName = Customer.LastName,
+            };
+            
+            _customersViewModel.GetDataAndCloseAddNewCustomerViewModel(customer);
         }
     }
 }
