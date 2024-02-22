@@ -78,8 +78,8 @@ namespace CarMechanic.UI.ViewModel
         {
             var employer = await _employerDataService.GetEmployerById(_userDataStore.CurrentUserId);
 
-            NameOfUser = $"{employer.FirstName} {employer.LastName}";
-            RoleOfUser = $"{employer.Role}";
+            NameOfUser = $"{employer?.FirstName} {employer?.LastName}";
+            RoleOfUser = $"{employer?.Role}";
         }
 
         private void GoToDashboard(object obj)
